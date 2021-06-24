@@ -32,7 +32,7 @@ public class LogInPage extends BasePage {
     @Step("Open login page")
     public LogInPage open() {
         log.info("Opening LogIn page");
-        driver.get(BASE_URL+LOGIN_PAGE_URL);
+        driver.get(BASE_URL + LOGIN_PAGE_URL);
         return this;
     }
 }
