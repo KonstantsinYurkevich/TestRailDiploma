@@ -13,7 +13,7 @@ public class LogInTest extends BaseTest {
                 .IsPageOpened();
         assertTrue(isOpened, "LogIn page doesn't open");
         isOpened = logInPage
-                .logIn()
+                .logIn(LOGIN,PASSWORD)
                 .IsPageOpened();
         assertTrue(isOpened, "Home page doesn't open");
     }

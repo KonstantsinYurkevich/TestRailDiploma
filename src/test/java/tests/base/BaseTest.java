@@ -19,12 +19,15 @@ import java.util.concurrent.TimeUnit;
 @Listeners(TestListener.class)
 public abstract class BaseTest {
 
+    public static final String LOGIN = System.getenv().getOrDefault("TESTRAIL_USER", PropertyReader.getProperty("testrail.user"));
+    public static final String PASSWORD = System.getenv().getOrDefault("TESTRAIL_PASSWORD", PropertyReader.getProperty("testrail.password"));
 
     protected LogInPage logInPage;
     WebDriver driver;
 
     @Parameters({"browser"})
     @BeforeMethod
+
     public void setUp(@Optional("chrome") String browser, ITestContext testContext) {
         if (browser.equals("chrome")) {
             Map<String, Object> prefs = new HashMap<>();

@@ -9,9 +9,9 @@ import tests.base.PropertyReader;
 
 @Log4j2
 public abstract class BasePage {
-    public static final String BASE_URL = System.getenv().getOrDefault("testrail.url", PropertyReader.getProperty("TESTRAIL_URL"));
-    public static final String LOGIN = System.getenv().getOrDefault("testrail.user", PropertyReader.getProperty("TESTRAIL_USER"));
-    public static final String PASSWORD = System.getenv().getOrDefault("testrail.password", PropertyReader.getProperty("TESTRAIL_PASSWORD"));
+
+    public static final String BASE_URL = System.getenv().getOrDefault("TESTRAIL_URL", PropertyReader.getProperty("testrail.url"));
+
     WebDriver driver;
     WebDriverWait wait;
 
