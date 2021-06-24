@@ -65,6 +65,8 @@ Test Automation Framework for Testrail.io
 + Lombok 1.18.8
 + Log4j2 2.14.1
 + Allure (TestNG - 2.13.9; Maven - 2.10.0)
++ Java Faker 1.0.2
++ Jackson-DataFormat-yaml 2.12.3
 
 ### *Test info:*
 
