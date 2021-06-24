@@ -53,20 +53,18 @@ Test Automation Framework for Testrail.io
 ### *Build requirements:*
 + Java 8
 + Maven 3.8.1
-+ Chrome browser 90.0
++ Chrome browser 91
 + OS
++ CircleCI
 
 ### *Used Technologies:*
 + Selenium 3.141.59
 + DriverManager 4.4.1
 + TestNG 7.1.0
 + OS: Windows 10
++ Lombok 1.18.8
++ Log4j2 2.14.1
++ Allure (TestNG - 2.13.9; Maven - 2.10.0)
 
 ### *Test info:*
-- Dependencies version [  mvn versions:display-dependency-updates ]
-- Update all dependencies [ mvn versions:use-latest-versions ]
-- Run only one test suite [ mvn clean test -Dtest=SuitName ]
-- Run only one test case [ mvn clean test -Dtest=TestName#testCase ]
-- To set default XML file for tests  [ mvn clean test -DsuiteXmlFile=src/test/resources/name.xml ]
-- Run default test XML [ mvn clean test ]
-- Test results [ allure-report (target/surefire-reports/emailable-report.html) allure serve ]
+
