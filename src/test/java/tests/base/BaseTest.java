@@ -34,20 +34,20 @@ public abstract class BaseTest {
             WebDriverManager.chromedriver().setup();
             options.addArguments("--no-sandbox");
             options.addArguments("--start-maximized");
-            options.addArguments("--headless");
+            /*options.addArguments("--headless");*/
             driver = new ChromeDriver(options);
         } else if (browser.equals("firefox")) {
             WebDriverManager.firefoxdriver().setup();
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("--no-sandbox");
-            options.addArguments("--headless");
+            /*options.addArguments("--headless");*/
             options.addPreference("disable_beforeunload", false);
             driver = new FirefoxDriver(options);
             driver.manage().window().maximize();
         }
         testContext.setAttribute("driver", driver);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         logInPage = new LogInPage(driver);
     }
 
