@@ -5,7 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 @Log4j2
-public class DropDown { WebDriver driver;
+public class DropDown {
+    WebDriver driver;
     String locator;
     String optionLocator;
 

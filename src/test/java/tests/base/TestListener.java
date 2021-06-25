@@ -7,6 +7,8 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import utils.AllureUtils;
 
+import java.util.ArrayList;
+
 @Log4j2
 public class TestListener implements ITestListener {
     //TODO CREATE TEST RUN USING API(ADD TEST CASES TOO)
@@ -19,6 +21,12 @@ public class TestListener implements ITestListener {
 
     public void onTestSuccess(ITestResult result) {
         WebDriver driver = (WebDriver) result.getTestContext().getAttribute("driver");
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        if (tabs.size() > 1) {
+            driver.switchTo().window(tabs.get(0));
+            driver.close();
+            driver.switchTo().window(tabs.get(1));
+        }
         AllureUtils.takeScreenshot(driver);
         log.info(String.format("Test Passed:%s", result.getName()));
     }
@@ -26,6 +34,12 @@ public class TestListener implements ITestListener {
     //TODO API REQUEST TO SET STATUS OF TEST CASE
     public void onTestFailure(ITestResult result) {
         WebDriver driver = (WebDriver) result.getTestContext().getAttribute("driver");
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        if (tabs.size() > 1) {
+            driver.switchTo().window(tabs.get(0));
+            driver.close();
+            driver.switchTo().window(tabs.get(1));
+        }
         AllureUtils.takeScreenshot(driver);
         log.info(String.format("Test Failed:%s", result.getName()));
     }

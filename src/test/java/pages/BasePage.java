@@ -29,7 +29,7 @@ public abstract class BasePage {
             driver.findElement(locator);
             return true;
         } catch (Exception exception) {
-            log.info(exception.getStackTrace());
+            log.info(exception.getMessage());
             return false;
         }
     }
@@ -53,6 +53,7 @@ public abstract class BasePage {
         return new TwitterPage(driver);
 
     }
+
     public UserGuidePage clickOnUserGuideLink() {
         new DropDown(driver).select("TestRail User Guide");
         return new UserGuidePage(driver);

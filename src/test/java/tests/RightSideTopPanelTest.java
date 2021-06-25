@@ -8,7 +8,7 @@ import static org.testng.Assert.assertTrue;
 
 public class RightSideTopPanelTest extends BaseTest {
 
-    @Test (description = "Test lint on TestRail blog")
+    @Test(description = "Test link on TestRail blog")
     public void buttonNewsLetterLinkShouldGoOnTestRailBlog() {
         boolean isOpened = logInPage
                 .open()
@@ -24,7 +24,8 @@ public class RightSideTopPanelTest extends BaseTest {
         assertTrue(isOpened, "Blog page doesn't open");
 
     }
-    @Test (description = "Test lint on TestRail twitter")
+
+    @Test(description = "Test link on TestRail twitter")
     public void buttonTwitterLinkShouldGoOnTestRailTwitterPage() {
         boolean isOpened = logInPage
                 .open()
@@ -40,7 +41,8 @@ public class RightSideTopPanelTest extends BaseTest {
         assertTrue(isOpened, "Twitter page doesn't open");
 
     }
-    @Test (description = "Test lint on TestRail twitter")
+
+    @Test(description = "Test lint on TestRail user guide")
     public void buttonTestRailUserGuideShouldOpenGuide() {
         boolean isOpened = logInPage
                 .open()
@@ -54,6 +56,5 @@ public class RightSideTopPanelTest extends BaseTest {
                 .clickOnUserGuideLink()
                 .IsPageOpened();
         assertTrue(isOpened, "User guide page doesn't open");
-
     }
 }
