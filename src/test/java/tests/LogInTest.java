@@ -6,8 +6,9 @@ import tests.base.BaseTest;
 import static org.testng.Assert.assertTrue;
 
 public class LogInTest extends BaseTest {
+
     @Test(description = "LogIn test")
-    public void logIn() {
+    public void logInShouldBeAcceptedWithCorrectData() {
         boolean isOpened = logInPage
                 .open()
                 .IsPageOpened();

@@ -9,11 +9,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
+import pages.HomePage;
 import pages.LogInPage;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
 
 @Log4j2
 @Listeners(TestListener.class)
@@ -23,6 +25,7 @@ public abstract class BaseTest {
     public static final String PASSWORD = System.getenv().getOrDefault("TESTRAIL_PASSWORD", PropertyReader.getProperty("testrail.password"));
 
     protected LogInPage logInPage;
+    protected HomePage homePage;
     WebDriver driver;
 
     @Parameters({"browser"})
@@ -50,13 +53,14 @@ public abstract class BaseTest {
         }
         testContext.setAttribute("driver", driver);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         logInPage = new LogInPage(driver);
+        homePage = new HomePage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         driver.quit();
-    }
 
+    }
 }
