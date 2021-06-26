@@ -6,7 +6,7 @@
     </listeners>
     <test name="Test package 1">
         <classes>
-            <class name="tests.LogInTest" />
+            <class name="tests.LogInLogOutTest" />
             <class name="tests.RightSideTopPanelTest" />
         </classes>
     </test> <!-- Test -->

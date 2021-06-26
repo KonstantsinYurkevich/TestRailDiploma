@@ -10,6 +10,7 @@ public class TwitterPage extends BasePage {
 
     @Override
     public boolean IsPageOpened() {
+        SwitchWindow(1);
         return driver.getPageSource().contains("twitter");
     }
 }

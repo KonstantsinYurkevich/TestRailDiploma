@@ -12,6 +12,7 @@ public class UserGuidePage extends BasePage {
 
     @Override
     public boolean IsPageOpened() {
+        SwitchWindow(1);
         return isExist(TITLE);
     }
 }

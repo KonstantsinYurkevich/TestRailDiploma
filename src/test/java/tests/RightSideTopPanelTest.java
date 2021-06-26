@@ -42,6 +42,23 @@ public class RightSideTopPanelTest extends BaseTest {
 
     }
 
+    @Test(description = "Test link on TestRail newsletter")
+    public void buttonNewsLetterLinkShouldGoOnTestRailNewsLetterPage() {
+        boolean isOpened = logInPage
+                .open()
+                .IsPageOpened();
+        assertTrue(isOpened, "LogIn page doesn't open");
+        isOpened = logInPage
+                .logIn()
+                .IsPageOpened();
+        assertTrue(isOpened, "Home page doesn't open");
+        isOpened = homePage
+                .clickOnNewsLetterLink()
+                .IsPageOpened();
+        assertTrue(isOpened, "News letter page doesn't open");
+
+    }
+
     @Test(description = "Test lint on TestRail user guide")
     public void buttonTestRailUserGuideShouldOpenGuide() {
         boolean isOpened = logInPage

@@ -6,7 +6,7 @@
     </listeners>
     <test name="test 1">
         <classes>
-            <class name="tests.LogInTest" />
+            <class name="tests.LogInLogOutTest" />
 
         </classes>
     </test> <!-- Test -->
