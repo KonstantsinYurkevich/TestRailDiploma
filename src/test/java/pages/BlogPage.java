@@ -2,9 +2,10 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import tests.base.Enum;
 
 public class BlogPage extends BasePage {
-    public static final By BLOG = By.cssSelector("div >[type=\"submit\"]");
+
 
     public BlogPage(WebDriver driver) {
         super(driver);
@@ -12,6 +13,6 @@ public class BlogPage extends BasePage {
 
     @Override
     public boolean IsPageOpened() {
-        return isExist(BLOG);
+        return isExist(By.cssSelector(Enum.BlogPageIsOpenedLocator.getValue()));
     }
 }

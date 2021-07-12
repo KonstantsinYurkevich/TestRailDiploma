@@ -6,40 +6,82 @@ import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import static org.testng.Assert.assertTrue;
-
 @Log4j2
 public class DropDown {
     WebDriver driver;
     String locator;
     String optionLocator;
-    String accessLocator;
-    String accessLocatorOption;
+    String inputLocator;
 
-    public DropDown(WebDriver driver) {
+    public DropDown(WebDriver driver, String DropDownName) {
+        switch (DropDownName) {
+            case "Navigation":
+                locator = "#navigation-menu";
+                optionLocator = "//div[@id = 'helpDropdown']//a[contains(text(),'%s')]";
+                break;
+            case "User dropdown":
+                locator = "#navigation-user";
+                optionLocator = "//div[@id = 'userDropdown']//a[contains(text(),'%s')]";
+                break;
+            case "Project access":
+                locator = "#access";
+                optionLocator = "//select[@id = 'access']//option[contains(text(),'%s')]";
+                break;
+            case "Defect plugin":
+                locator = "#defect_plugin_chzn";
+                inputLocator = "//div[@id='defect_plugin_chzn']//input[contains(@type,'text')]";
+                optionLocator = "//div[@id = 'defect_plugin_chzn']//li[contains(@class,'active-result')]";
+                break;
+            case "Reference plugin":
+                locator = "#reference_plugin_chzn";
+                inputLocator = "//div[@id='reference_plugin_chzn']//input[contains(@type,'text')]";
+                optionLocator = "//div[@id = 'reference_plugin_chzn']//li[contains(@class,'active-result')]";
+                break;
+            case "Language":
+                locator = "#language";
+                optionLocator = "//select[@id = 'language']//option[contains(text(),'%s')]";
+                break;
+            case "Theme":
+                locator = "#theme";
+                optionLocator = "//select[@id = 'theme']//option[contains(text(),'%s')]";
+                break;
+            case "Locate":
+                locator = "#locale_chzn";
+                inputLocator = "//div[@id='locale_chzn']//input[contains(@type,'text')]";
+                optionLocator = "//div[@id = 'locale_chzn']//li[contains(@class,'active-result')]";
+                break;
+            case "Time Zone":
+                locator = "#timezone_chzn";
+                inputLocator = "//div[@id='timezone_chzn']//input[contains(@type,'text')]";
+                optionLocator = "//div[@id = 'timezone_chzn']//li[contains(@class,'active-result')]";
+                break;
+            case "Role":
+                locator = "#role_id";
+                optionLocator = "//select[@id = 'role_id']//option[contains(text(),'%s')]";
+                break;
+            case "Type":
+                locator = "#userFieldType";
+                optionLocator = "//select[@id = 'userFieldType']//option[contains(text(),'%s')]";
+                break;
 
-        locator = "#navigation-menu";
-        optionLocator = "//a[contains(text(),'%s')]";
-
-        accessLocator = "#access";
-        accessLocatorOption = "//option[contains(text(),'%s')]";
-
+        }
 
         this.driver = driver;
     }
 
     public void select(String option) {
-        assertTrue(isExist(By.cssSelector(locator)));
-        assertTrue(isExist(By.xpath(String.format(optionLocator, option))));
+        isExist(By.cssSelector(locator));
         driver.findElement(By.cssSelector(locator)).click();
         driver.findElement(By.xpath(String.format(optionLocator, option))).click();
     }
 
-    public void selectOption(String option) {
-        assertTrue(isExist(By.cssSelector(accessLocator)));
-        assertTrue(isExist(By.xpath(String.format(accessLocatorOption, option))));
-        driver.findElement(By.cssSelector(accessLocator)).click();
-        driver.findElement(By.xpath(String.format(accessLocatorOption, option))).click();
+    public void selectIn(String option) {
+        isExist(By.cssSelector(locator));
+        driver.findElement(By.cssSelector(locator)).click();
+        isExist(By.xpath(inputLocator));
+        driver.findElement(By.xpath(inputLocator)).sendKeys(option);
+        isExist(By.xpath(optionLocator));
+        driver.findElement(By.xpath(optionLocator)).click();
     }
 
     public boolean isExist(By locator) {

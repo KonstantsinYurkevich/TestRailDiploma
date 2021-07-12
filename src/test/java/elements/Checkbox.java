@@ -6,24 +6,24 @@ import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import static org.testng.Assert.assertTrue;
-
 @Log4j2
 public class Checkbox {
     WebDriver driver;
     String locator;
     String label;
-    String locatorType;
+    String locatorTypeSelect;
+    String locatorTypeClick;
 
     public Checkbox(WebDriver driver, String label) {
-        locatorType = "//strong[contains(text(),'%s')]//ancestor::div[contains(@class,'project-type')]//input";
+        locatorTypeSelect = "//strong[contains(text(),'%s')]//ancestor::div[contains(@class,'project-type')]//input";
+        locatorTypeClick = "//strong[contains(text(),'%s')]//ancestor::div[contains(@class,'checkbox')]//input";
         locator = "//input[@name= '%s']";
         this.label = label;
         this.driver = driver;
     }
 
     public void select(boolean option) {
-        assertTrue(isExist(By.xpath(String.format(locator, label))));
+        isExist(By.xpath(String.format(locator, label)));
         if (option) {
             driver.findElement(By.xpath(String.format(locator, label))).click();
         }
@@ -31,8 +31,8 @@ public class Checkbox {
     }
 
     public void click() {
-        assertTrue(isExist(By.xpath(String.format(locatorType, label))));
-        driver.findElement(By.xpath(String.format(locatorType, label))).click();
+        isExist(By.xpath(String.format(locatorTypeClick, label)));
+        driver.findElement(By.xpath(String.format(locatorTypeClick, label))).click();
     }
 
     public boolean isExist(By locator) {

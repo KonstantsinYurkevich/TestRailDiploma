@@ -7,28 +7,28 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 @Log4j2
-public class Input {
+public class DropDownUserAccess {
     WebDriver driver;
-    String fieldName;
-    String input;
-    String area;
+    String locator;
+    String optionLocator;
+    String userName;
 
-    public Input(WebDriver driver, String fieldName) {
-        input = "//input[@name= '%s']";
-        area = "//textarea[@name= '%s']";
+    public DropDownUserAccess(WebDriver driver, String userName) {
+
+        locator = "//span[contains(text(),'%s')]//ancestor::tr/td/a[contains(@class,'nolink')]";
+        optionLocator = "//div[contains(@id,'userAccessDropdown')]//a[contains(text(),'%s')]";
+
+        this.userName = userName;
         this.driver = driver;
-        this.fieldName = fieldName;
     }
 
-    public void writeIn(String text) {
-        isExist(By.xpath(String.format(input, fieldName)));
-        driver.findElement(By.xpath(String.format(input, fieldName))).sendKeys(text);
+    public void select(String option) {
+        isExist(By.xpath(String.format(locator, userName)));
+        isExist(By.xpath(String.format(optionLocator, option)));
+        driver.findElement(By.xpath(String.format(locator, userName))).click();
+        driver.findElement(By.xpath(String.format(optionLocator, option))).click();
     }
 
-    public void writeInArea(String text) {
-        isExist(By.xpath(String.format(area, fieldName)));
-        driver.findElement(By.xpath(String.format(area, fieldName))).sendKeys(text);
-    }
 
     public boolean isExist(By locator) {
         log.info("Check that element exists");

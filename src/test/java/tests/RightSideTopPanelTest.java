@@ -13,15 +13,15 @@ public class RightSideTopPanelTest extends BaseTest {
         boolean isOpened = logInPage
                 .open()
                 .IsPageOpened();
-        assertTrue(isOpened, "LogIn page doesn't open");
+        assertTrue(isOpened, "LogIn page wasn't opened");
         isOpened = logInPage
-                .logIn()
+                .logIn(LOGIN, PASSWORD)
                 .IsPageOpened();
-        assertTrue(isOpened, "Home page doesn't open");
+        assertTrue(isOpened, "Home page wasn't opened");
         isOpened = homePage
                 .clickOnBlogLink()
                 .IsPageOpened();
-        assertTrue(isOpened, "Blog page doesn't open");
+        assertTrue(isOpened, "Blog page wasn't opened");
 
     }
 
@@ -30,15 +30,15 @@ public class RightSideTopPanelTest extends BaseTest {
         boolean isOpened = logInPage
                 .open()
                 .IsPageOpened();
-        assertTrue(isOpened, "LogIn page doesn't open");
+        assertTrue(isOpened, "LogIn page wasn't opened");
         isOpened = logInPage
-                .logIn()
+                .logIn(LOGIN, PASSWORD)
                 .IsPageOpened();
-        assertTrue(isOpened, "Home page doesn't open");
+        assertTrue(isOpened, "Home page wasn't opened");
         isOpened = homePage
                 .clickOnTwitterLink()
                 .IsPageOpened();
-        assertTrue(isOpened, "Twitter page doesn't open");
+        assertTrue(isOpened, "Twitter page wasn't opened");
 
     }
 
@@ -47,15 +47,15 @@ public class RightSideTopPanelTest extends BaseTest {
         boolean isOpened = logInPage
                 .open()
                 .IsPageOpened();
-        assertTrue(isOpened, "LogIn page doesn't open");
+        assertTrue(isOpened, "LogIn page wasn't opened");
         isOpened = logInPage
-                .logIn()
+                .logIn(LOGIN, PASSWORD)
                 .IsPageOpened();
-        assertTrue(isOpened, "Home page doesn't open");
+        assertTrue(isOpened, "Home page wasn't opened");
         isOpened = homePage
                 .clickOnNewsLetterLink()
                 .IsPageOpened();
-        assertTrue(isOpened, "News letter page doesn't open");
+        assertTrue(isOpened, "News letter page wasn't opened");
 
     }
 
@@ -64,14 +64,14 @@ public class RightSideTopPanelTest extends BaseTest {
         boolean isOpened = logInPage
                 .open()
                 .IsPageOpened();
-        assertTrue(isOpened, "LogIn page doesn't open");
+        assertTrue(isOpened, "LogIn page wasn't opened");
         isOpened = logInPage
-                .logIn()
+                .logIn(LOGIN, PASSWORD)
                 .IsPageOpened();
-        assertTrue(isOpened, "Home page doesn't open");
+        assertTrue(isOpened, "Home page wasn't opened");
         isOpened = homePage
                 .clickOnUserGuideLink()
                 .IsPageOpened();
-        assertTrue(isOpened, "User guide page doesn't open");
+        assertTrue(isOpened, "User guide page wasn't opened");
     }
 }

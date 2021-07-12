@@ -8,6 +8,7 @@
         <classes>
             <class name="tests.LogInLogOutTest" />
             <class name="tests.RightSideTopPanelTest" />
+            <class name="tests.AddUserTest" />
         </classes>
     </test> <!-- Test -->
 </suite>
