@@ -8,6 +8,7 @@ import tests.base.BaseTest;
 import static org.testng.Assert.assertTrue;
 
 public class AddUserTest extends BaseTest {
+    //TODO добавить названия тестов
     @Test
     public void userShouldBeCreated() {
         boolean isOpened = logInPage

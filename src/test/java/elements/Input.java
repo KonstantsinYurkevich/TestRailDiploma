@@ -30,6 +30,7 @@ public class Input {
         driver.findElement(By.xpath(String.format(area, fieldName))).sendKeys(text);
     }
 
+    //TODO если нужен isExist РЕАЛЬНО НУЖЕН?? То тогда создавай BaseElement с этим методом
     public boolean isExist(By locator) {
         log.info("Check that element exists");
         try {

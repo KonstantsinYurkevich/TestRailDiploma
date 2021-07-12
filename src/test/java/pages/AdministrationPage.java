@@ -29,6 +29,8 @@ public class AdministrationPage extends BasePage {
         return new ProjectTab(driver);
     }
 
+    //TODO по всему проекту названия методов с маленькой буквы
+    //TODO не работает открытие вкладки
     @Step("Open Users & Roles settings tab")
     public UsersRolesTab OpenTabUsersRoles() {
         log.info("Open Users & Roles settings tab");

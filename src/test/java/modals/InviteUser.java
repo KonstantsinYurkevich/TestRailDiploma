@@ -5,7 +5,9 @@ import lombok.Data;
 
 @Data
 @Builder
+//TODO просто переименовать в класс User
 public class InviteUser {
+    //TODO названия переменных с маленькой буквы
     String FullName;
     String EmailAddress;
     boolean enableEmailNotifications;

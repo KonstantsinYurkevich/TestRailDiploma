@@ -13,6 +13,9 @@ public class DropDown {
     String optionLocator;
     String inputLocator;
 
+    //TODO сделать одну обертку в которой будет DropDown с div и a
+    //TODO сделать вторую обертку в которой будет DropDown с поиском
+    //TODO создать третий DtopDown который будет обрабатывать Select
     public DropDown(WebDriver driver, String DropDownName) {
         switch (DropDownName) {
             case "Navigation":

@@ -10,6 +10,7 @@ import java.util.Random;
 public class ProjectFactory {
     public static Project get() {
 
+        //TODO вкурить апликабельно ли https://www.tabnine.com/code/java/methods/com.github.javafaker.Faker/options
         Faker faker = new Faker();
         List<String> projectSuiteType = new ArrayList<>();
         projectSuiteType.add(Enum.suiteTypeBaseline.getValue());

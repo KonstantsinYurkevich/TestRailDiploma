@@ -13,6 +13,7 @@ public class AddProjectTest extends BaseTest {
 
     @Test
     public void projectShouldBeCreatedAndDeleted() throws InterruptedException {
+        //TODO isCreated, isDeleted
         boolean isOpened, IsCreated, IsDeleted;
         isOpened = logInPage
                 .open()
@@ -29,6 +30,7 @@ public class AddProjectTest extends BaseTest {
                 .addProject()
                 .create(project, userVariable)
                 .IsProjectExists(project);
+        //TODO сказать это баг или нет при создании ручками или в дебаге проекта Cara Van
         assertTrue(IsCreated, "Project wasn't created");
         IsDeleted = newProjectDetailsPage
                 .validateProject(project)

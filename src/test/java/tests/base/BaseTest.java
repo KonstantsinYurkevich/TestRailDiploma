@@ -63,6 +63,7 @@ public abstract class BaseTest {
         }
         testContext.setAttribute("driver", driver);
         driver.manage().window().maximize();
+        //TODO reduce to 10 seconds
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         logInPage = new LogInPage(driver);
         homePage = new HomePage(driver);

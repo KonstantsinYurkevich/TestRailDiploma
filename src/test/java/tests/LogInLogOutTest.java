@@ -29,6 +29,7 @@ public class LogInLogOutTest extends BaseTest {
         assertEquals(error, errorMessage);
     }
 
+    //TODO не забывать обновлять regression.xml
     @Test(description = "LogIn test")
     public void logInShouldBeAcceptedWithCorrectData() {
         boolean isOpened = logInPage

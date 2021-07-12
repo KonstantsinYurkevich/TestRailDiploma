@@ -1,5 +1,6 @@
 package tests.base;
 
+//TODO rename to Constants
 public enum Enum {
     suiteTypeAll("Use a single repository for all cases (recommended)"),
     suiteTypeBaseline("Use a single repository with baseline support"),

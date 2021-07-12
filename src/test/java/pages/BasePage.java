@@ -65,6 +65,7 @@ public abstract class BasePage {
 
     }
 
+    //TODO к черту эти тесты проверяющие что ссылки работают. Всмысле все что ведет нас ИЗ Тестрейла куда-то мы не тестируем
     @Step("Click on button Twitter")
     public TwitterPage clickOnTwitterLink() {
         log.info("Click on button Twitter");
