@@ -3,7 +3,7 @@ package pages.tabs;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
-import tests.base.Enum;
+import tests.base.Constants;
 
 public class DataManagementTab extends BasePage {
 
@@ -12,7 +12,7 @@ public class DataManagementTab extends BasePage {
     }
 
     @Override
-    public boolean IsPageOpened() {
-        return isExist(By.cssSelector(Enum.DataManagementTabLocator.getValue()));
+    public boolean isPageOpened() {
+        return isExist(By.cssSelector(Constants.DataManagementTabLocator.getValue()));
     }
 }

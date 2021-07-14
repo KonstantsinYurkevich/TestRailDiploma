@@ -1,7 +1,6 @@
 package tests.base;
 
-//TODO rename to Constants
-public enum Enum {
+public enum Constants {
     suiteTypeAll("Use a single repository for all cases (recommended)"),
     suiteTypeBaseline("Use a single repository with baseline support"),
     suiteTypeManage("Use multiple test suites to manage cases"),
@@ -10,15 +9,13 @@ public enum Enum {
     ProjectAddTabReferences("projects-tabs-references"),
     ProjectAddTabUserVariables("users-fields-fields"),
     ProjectAddDefaultAccessGlobal("Global Role"),
-    ProjectAddDefaultAccessNo("No Access"),
     ProjectAddDefaultAccessRead("Read-only"),
     ProjectAddDefaultAccessTester("Tester"),
     ProjectAddDefaultAccessDesigner("Designer"),
     ProjectAddDefaultAccessLead("Lead"),
-    DropDownHelpAndFeedBack("Navigation"),
-    DropDownUserMenu("User dropdown"),
+    DropDownUserMenu("navigation-user"),
     DropDownUserMenuOptionLogOut("Logout"),
-    DropDownProjectGlobalAccess("Project access"),
+    DropDownProjectGlobalAccess("access"),
     DropDownProjectDefectPlugin("Defect plugin"),
     DropDownProjectReferencePlugin("Reference plugin"),
     InputDefectViewUrl("defect_id_url"),
@@ -62,12 +59,11 @@ public enum Enum {
     NewUserThemeModern("Modern"),
     NewUserThemeDark("Dark"),
     NewUserThemeClassic("Classic"),
+    DropDownSelectType("userFieldType"),
     DefectPluginYouTrack20191("YouTrack20191"),
-    BLOG_LOCATOR("div> a[href^=\"http://blog.gurock.com/\"]"),
-    TWITTER_LOCATOR("div> a[href^=\"http://twitter.com/testrail\"]"),
-    NEWSLETTER_LOCATOR("div> a[href^=\"https://secure.gurock.com/customers/testrail/newsletter?email=%s\"]"),
     AdministrationTabLocator("navigation-admin"),
     DashboardTabLocator("navigation-dashboard"),
+    ProjectListDashboardLocator("//a[contains(text(),'%s')]"),
     ProjectInListLocator("//a[contains(text(),\"%s\")]"),
     ProjectNameLocator(".page_title"),
     ProjectAnnouncementsLocator(".markdown >p"),
@@ -84,18 +80,19 @@ public enum Enum {
     NewUserSwitchTabLocator("//div/a[contains(text(),'%s')]"),
     NewUserInputName("name"),
     NewUserInputEmail("email"),
+    ButtonEdit(".button-edit"),
     NewUserEmailNotificationLocator("//strong[contains(text(),'Enable email notifications')]//ancestor::div[contai" +
             "ns(@class,'checkbox')]//input"),
-    DropDownLanguage("Language"),
-    DropDownTheme("Theme"),
+    DropDownSelectLanguage("language"),
+    DropDownSelectTheme("theme"),
+    DropDownSelectRole("role_id"),
     NewUserNoInvitationIsSentLocator("invite_no"),
     NewUserSetPasswordLocator("input[name = 'password']"),
     NewUserConfirmPasswordLocator("input[name = 'confirm']"),
     NewUserTabAccess("Access"),
     NewUserTabProjects("Projects"),
     NewUserTabProjectProjectNameLocator("//a[contains(text(),'%s')]//ancestor::tr//a[contains(@class,'nolink')]"),
-    NewUserTabProjectProjectAccessLocator("//div[contains(@id,'userProjectAccessDropdown')]//a[contains(text(),'%s')]"),
-    NewUserDropDownRole("Role"),
+    NewUserTabProjectProjectAccessLocator("//div[contains(@id,'userProjectAccessDropdown')]//a[contains(text(),\'%s\')]"),
     NewUserCheckboxIsActive("This user is active"),
     NewUserCheckboxIsAdministrator("This user is an administrator"),
     AdministrationTabOverViewTabLocator(".storage-box-title"),
@@ -107,22 +104,39 @@ public enum Enum {
     AdministrationTabProjectTabDeleteProjectLocator(" //a[contains(@onclick,'%s')]"),
     AdministrationTabProjectTabDeleteProjectConfirmWindowButtonOkLocator(".ui-dialog  .button-ok"),
     AdministrationTabProjectTabDeleteProjectMessageSuccessLocator(".message-success"),
-
-    AdministrationTabOpenUserAndRoleTabLocator("#navigation-sub-users"),
+    AdministrationTabOpenUserAndRoleTabLocator("navigation-sub-users"),
     AdministrationTabOpenOverViewTabLocator("navigation-sub-overview"),
     AdministrationTabOpenCustomizationsTabLocator("navigation-sub-customization"),
     AdministrationTabOpenIntegrationTabLocator("navigation-sub-integration"),
     AdministrationTabOpenDataManagementTabLocator("navigation-sub-subscription"),
     AdministrationTabOpenSiteSettingsTabLocator("navigation-sub-sitesettings"),
-    BlogPageIsOpenedLocator("div >[type=\"submit\"]"),
     HomePageButtonNewProjectLocator(".sidebar-button"),
 
-    NewUserButtonAddLocator("accept");
+    FieldName("name"),
+    FieldAnnouncement("announcement"),
+    CheckBoxAnnouncement("show_announcement"),
+    CheckBoxUseASingleRepositoryWithBaselineSupportLocator("Use a single repository with baseline support"),
+    CheckBoxUseMultipleTestSuitesToManageCasesLocator("Use multiple test suites to manage cases"),
+    FieldDefectViewURLLocator("//label[contains(text(),'Defect View Url')]/ancestor::div[contains(@class," +
+            "'form-group')]/input"),
+    FieldDefectAddURLLocator("//label[contains(text(),'Defect Add Url')]/ancestor::div[contains(@class," +
+            "'form-group')]/input"),
+    DefectPluginInputLocator("//div[contains(@id,'defect_plugin_chzn')]//span"),
+    FieldReferenceViewURLLocator("//label[contains(text(),'Reference View Url')]/ancestor::div[contains(@class," +
+            "'form-group')]/input"),
+    FieldReferenceAddURLLocator("//label[contains(text(),'Reference Add Url')]/ancestor::div[contains(@class," +
+            "'form-group')]/input"),
+    ReferencePluginInputLocator("//div[contains(@id,'reference_plugin_chzn')]//span"),
+    ButtonAddUserVariableLocator("//a[contains(text(),'Add User Variable')]"),
+    SwitchTabLocator("//a[@id = '%s' and contains(@class,'current')]"),
+    ButtonOkLocator("userFieldSubmit"),
+
+    ButtonAcceptAdd("accept");
 
 
     public final String value;
 
-    Enum(final String value) {
+    Constants(final String value) {
         this.value = value;
     }
 

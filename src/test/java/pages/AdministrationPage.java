@@ -5,7 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.tabs.*;
-import tests.base.Enum;
+import tests.base.Constants;
 
 @Log4j2
 public class AdministrationPage extends BasePage {
@@ -16,66 +16,64 @@ public class AdministrationPage extends BasePage {
 
     @Override
     @Step("Check that administration tab opened")
-    public boolean IsPageOpened() {
+    public boolean isPageOpened() {
         log.info("Check that administration tab opened");
-        return isExist(By.cssSelector(Enum.AdministrationTabOverViewTabLocator.getValue()));
+        return isExist(By.cssSelector(Constants.AdministrationTabOverViewTabLocator.getValue()));
     }
 
-    @Step("Open Project settings tab")
-    public ProjectTab OpenTabProjects() {
+    @Step("Open Project  tab")
+    public ProjectTab openTabProjects() {
         log.info("Open Project settings tab");
-        isExist(By.id(Enum.AdministrationTabOpenProjectTabLocator.getValue()));
-        driver.findElement(By.id(Enum.AdministrationTabOpenProjectTabLocator.getValue())).click();
+        isExist(By.id(Constants.AdministrationTabOpenProjectTabLocator.getValue()));
+        driver.findElement(By.id(Constants.AdministrationTabOpenProjectTabLocator.getValue())).click();
         return new ProjectTab(driver);
     }
 
-    //TODO по всему проекту названия методов с маленькой буквы
-    //TODO не работает открытие вкладки
-    @Step("Open Users & Roles settings tab")
-    public UsersRolesTab OpenTabUsersRoles() {
+    @Step("Open Users & Roles  tab")
+    public UsersRolesTab openTabUsersRoles() {
         log.info("Open Users & Roles settings tab");
-        isExist(By.id(Enum.AdministrationTabOpenUserAndRoleTabLocator.getValue()));
-        driver.findElement(By.id(Enum.AdministrationTabOpenUserAndRoleTabLocator.getValue())).click();
+        isExist(By.id(Constants.AdministrationTabOpenUserAndRoleTabLocator.getValue()));
+        driver.findElement(By.id(Constants.AdministrationTabOpenUserAndRoleTabLocator.getValue())).click();
         return new UsersRolesTab(driver);
     }
 
-    @Step("Open Overview settings tab")
-    public OverviewTab OpenTabOverview() {
+    @Step("Open Overview  tab")
+    public OverviewTab openTabOverview() {
         log.info("Open Overview settings tab");
-        isExist(By.id(Enum.AdministrationTabOpenOverViewTabLocator.getValue()));
-        driver.findElement(By.id(Enum.AdministrationTabOpenOverViewTabLocator.getValue())).click();
+        isExist(By.id(Constants.AdministrationTabOpenOverViewTabLocator.getValue()));
+        driver.findElement(By.id(Constants.AdministrationTabOpenOverViewTabLocator.getValue())).click();
         return new OverviewTab(driver);
     }
 
-    @Step("Open Customizations settings tab")
-    public CustomizationsTab OpenTabCustomizations() {
+    @Step("Open Customizations  tab")
+    public CustomizationsTab openTabCustomizations() {
         log.info("Open Customizations settings tab");
-        isExist(By.id(Enum.AdministrationTabOpenCustomizationsTabLocator.getValue()));
-        driver.findElement(By.id(Enum.AdministrationTabOpenCustomizationsTabLocator.getValue())).click();
+        isExist(By.id(Constants.AdministrationTabOpenCustomizationsTabLocator.getValue()));
+        driver.findElement(By.id(Constants.AdministrationTabOpenCustomizationsTabLocator.getValue())).click();
         return new CustomizationsTab(driver);
     }
 
-    @Step("Open Integration settings tab")
-    public IntegrationTab OpenTabPIntegration() {
+    @Step("Open Integration  tab")
+    public IntegrationTab openTabPIntegration() {
         log.info("Open Integration settings tab");
-        isExist(By.id(Enum.AdministrationTabOpenIntegrationTabLocator.getValue()));
-        driver.findElement(By.id(Enum.AdministrationTabOpenIntegrationTabLocator.getValue())).click();
+        isExist(By.id(Constants.AdministrationTabOpenIntegrationTabLocator.getValue()));
+        driver.findElement(By.id(Constants.AdministrationTabOpenIntegrationTabLocator.getValue())).click();
         return new IntegrationTab(driver);
     }
 
-    @Step("Open Data Management settings tab")
-    public DataManagementTab OpenTabPDataManagement() {
+    @Step("Open Data Management  tab")
+    public DataManagementTab openTabPDataManagement() {
         log.info("Open Data Management settings tab");
-        isExist(By.id(Enum.AdministrationTabOpenDataManagementTabLocator.getValue()));
-        driver.findElement(By.id(Enum.AdministrationTabOpenDataManagementTabLocator.getValue())).click();
+        isExist(By.id(Constants.AdministrationTabOpenDataManagementTabLocator.getValue()));
+        driver.findElement(By.id(Constants.AdministrationTabOpenDataManagementTabLocator.getValue())).click();
         return new DataManagementTab(driver);
     }
 
-    @Step("Open Site settings tab")
-    public SiteSettingsTab OpenTabSiteSettings() {
+    @Step("Open Site Settings tab")
+    public SiteSettingsTab openTabSiteSettings() {
         log.info("Open Site settings tab");
-        isExist(By.id(Enum.AdministrationTabOpenSiteSettingsTabLocator.getValue()));
-        driver.findElement(By.id(Enum.AdministrationTabOpenSiteSettingsTabLocator.getValue())).click();
+        isExist(By.id(Constants.AdministrationTabOpenSiteSettingsTabLocator.getValue()));
+        driver.findElement(By.id(Constants.AdministrationTabOpenSiteSettingsTabLocator.getValue())).click();
         return new SiteSettingsTab(driver);
     }
 }

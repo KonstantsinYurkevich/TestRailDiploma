@@ -8,15 +8,16 @@ import static org.testng.Assert.assertTrue;
 
 public class AddUserToTheProjectTest extends BaseTest {
 
-    @Test
-    public void newUserShouldBeAddedToTheNewProject() throws InterruptedException {
-        boolean isOpened = logInPage
+    @Test(description = "Create project, create user, add created user to the new project")
+    public void newUserShouldBeAddedToTheNewProject() {
+        boolean isOpened, isDeleted;
+        isOpened = logInPage
                 .open()
-                .IsPageOpened();
+                .isPageOpened();
         assertTrue(isOpened, "LogIn page wasn't opened");
         isOpened = logInPage
                 .logIn(LOGIN, PASSWORD)
-                .IsPageOpened();
+                .isPageOpened();
         assertTrue(isOpened, "Home page wasn't opened");
         Project project = ProjectFactory.get();
         UserVariable userVariable = UserVariableFactory.get();
@@ -25,46 +26,57 @@ public class AddUserToTheProjectTest extends BaseTest {
                 .create(project, userVariable)
                 .validateProject(project);
         isOpened = homePage
-                .OpenAdministrationTab()
-                .IsPageOpened();
+                .openAdministrationTab()
+                .isPageOpened();
         assertTrue(isOpened, "Administration page dowasn't opened");
         isOpened = administrationPage
-                .OpenTabUsersRoles()
-                .IsPageOpened();
+                .openTabUsersRoles()
+                .isPageOpened();
         assertTrue(isOpened, "Project page from Administration tab wasn't opened");
-        InviteUser user = InviteUserFactory.get();
+        User user = UserFactory.get();
         usersRolesTab
                 .clickButtonAddUser()
-                .AddNewUserToTheProject(project, user);
+                .addNewUserToTheProject(project, user);
+        isDeleted = administrationPage
+                .openTabProjects()
+                .deleteProject(project)
+                .isProjectDeleted(project);
+        assertTrue(isDeleted, "Project wasn't deleted");
     }
 
-    @Test
-    public void existingUserShouldBeAddedToTheNewProject() throws InterruptedException {
-        boolean isOpened = logInPage
+    @Test(description = "Create project and add existing user to thw new project")
+    public void existingUserShouldBeAddedToTheNewProject() {
+        boolean isOpened, isDeleted;
+        isOpened = logInPage
                 .open()
-                .IsPageOpened();
+                .isPageOpened();
         assertTrue(isOpened, "LogIn page wasn't opened");
         isOpened = logInPage
                 .logIn(LOGIN, PASSWORD)
-                .IsPageOpened();
+                .isPageOpened();
         assertTrue(isOpened, "Home page wasn't opened");
         isOpened = homePage
-                .OpenAdministrationTab()
-                .IsPageOpened();
+                .openAdministrationTab()
+                .isPageOpened();
         assertTrue(isOpened, "Administration page wasn't opened");
         isOpened = administrationPage
-                .OpenTabUsersRoles()
-                .IsPageOpened();
+                .openTabUsersRoles()
+                .isPageOpened();
         assertTrue(isOpened, "Project page from Administration tab wasn't opened");
-        InviteUser user = InviteUserFactory.get();
+        User user = UserFactory.get();
         usersRolesTab
                 .clickButtonAddUser()
-                .AddUser(user);
+                .addUser(user);
         Project project = ProjectFactory.get();
         UserVariable userVariable = UserVariableFactory.get();
-        homePage
-                .OpenDashboard()
+        isDeleted = homePage
+                .openDashboard()
                 .addProject()
-                .createAndAddUserToTheProject(project, userVariable, user);
+                .createAndAddUserToTheProject(project, userVariable, user)
+                .validateProject(project)
+                .openProjectTab()
+                .deleteProject(project)
+                .isProjectDeleted(project);
+        assertTrue(isDeleted, "Project wasn't deleted");
     }
 }

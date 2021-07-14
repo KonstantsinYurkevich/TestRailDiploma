@@ -6,7 +6,7 @@ import modals.Project;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.tabs.ProjectTab;
-import tests.base.Enum;
+import tests.base.Constants;
 
 @Log4j2
 public class NewProjectDetailsPage extends BasePage {
@@ -16,17 +16,17 @@ public class NewProjectDetailsPage extends BasePage {
     }
 
     @Override
-    public boolean IsPageOpened() {
-        return true;
+    public boolean isPageOpened() {
+        return isExist(By.cssSelector(Constants.ButtonEdit.getValue()));
     }
 
-    public boolean IsProjectExists(Project project) {
-        return isExist(By.xpath(String.format("//a[contains(text(),'%s')]", project.getName())));
+    public boolean isProjectExists(Project project) {
+        return isExist(By.xpath(String.format(Constants.ProjectListDashboardLocator.getValue(), project.getName())));
     }
 
-    public ProjectTab OpenProjectTab() {
-        driver.findElement(By.id(Enum.AdministrationTabLocator.getValue())).click();
-        driver.findElement(By.id(Enum.AdministrationTabOpenProjectTabLocator.getValue())).click();
+    public ProjectTab openProjectTab() {
+        driver.findElement(By.id(Constants.AdministrationTabLocator.getValue())).click();
+        driver.findElement(By.id(Constants.AdministrationTabOpenProjectTabLocator.getValue())).click();
         return new ProjectTab(driver);
     }
 

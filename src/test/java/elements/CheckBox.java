@@ -7,14 +7,14 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 @Log4j2
-public class Checkbox {
+public class CheckBox {
     WebDriver driver;
     String locator;
     String label;
     String locatorTypeSelect;
     String locatorTypeClick;
 
-    public Checkbox(WebDriver driver, String label) {
+    public CheckBox(WebDriver driver, String label) {
         locatorTypeSelect = "//strong[contains(text(),'%s')]//ancestor::div[contains(@class,'project-type')]//input";
         locatorTypeClick = "//strong[contains(text(),'%s')]//ancestor::div[contains(@class,'checkbox')]//input";
         locator = "//input[@name= '%s']";
@@ -33,6 +33,11 @@ public class Checkbox {
     public void click() {
         isExist(By.xpath(String.format(locatorTypeClick, label)));
         driver.findElement(By.xpath(String.format(locatorTypeClick, label))).click();
+    }
+
+    public void option() {
+        isExist(By.xpath(String.format(locatorTypeSelect, label)));
+        driver.findElement(By.xpath(String.format(locatorTypeSelect, label))).click();
     }
 
     public boolean isExist(By locator) {

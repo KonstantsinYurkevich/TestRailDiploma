@@ -23,7 +23,7 @@ public class LogInPage extends BasePage {
     }
 
     @Override
-    public boolean IsPageOpened() {
+    public boolean isPageOpened() {
         return isExist(LOGIN_BUTTON);
     }
 
@@ -45,6 +45,7 @@ public class LogInPage extends BasePage {
 
     @Step("Get error message on login page")
     public String getError() {
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         log.info("Get error message on login page");
         By locator = null;
         if (isExist(ERROR_MASSAGE)) {

@@ -29,32 +29,31 @@ public class LogInLogOutTest extends BaseTest {
         assertEquals(error, errorMessage);
     }
 
-    //TODO не забывать обновлять regression.xml
-    @Test(description = "LogIn test")
+    @Test(description = "Login test")
     public void logInShouldBeAcceptedWithCorrectData() {
         boolean isOpened = logInPage
                 .open()
-                .IsPageOpened();
+                .isPageOpened();
         assertTrue(isOpened, "LogIn page wasn't opened");
         isOpened = logInPage
                 .logIn(LOGIN, PASSWORD)
-                .IsPageOpened();
+                .isPageOpened();
         assertTrue(isOpened, "Home page wasn't opened");
     }
 
-    @Test(description = "LogOut test")
+    @Test(description = "Logout test")
     public void LogOutShouldGoToLogInPage() {
         boolean isOpened = logInPage
                 .open()
-                .IsPageOpened();
+                .isPageOpened();
         assertTrue(isOpened, "LogIn page wasn't opened");
         isOpened = logInPage
                 .logIn(LOGIN, PASSWORD)
-                .IsPageOpened();
+                .isPageOpened();
         assertTrue(isOpened, "Home page wasn't opened");
         isOpened = homePage
                 .logout()
-                .IsPageOpened();
+                .isPageOpened();
         assertTrue(isOpened, "LogIn page wasn't opened");
     }
 }

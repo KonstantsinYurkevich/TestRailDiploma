@@ -1,14 +1,14 @@
 package modals;
 
 import com.github.javafaker.Faker;
-import tests.base.Enum;
+import tests.base.Constants;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class InviteUserFactory {
+public class UserFactory {
 
     public static String randomString() {
         String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -20,36 +20,35 @@ public class InviteUserFactory {
         return sb.toString();
     }
 
-    public static InviteUser get() {
+    public static User get() {
         Faker faker = new Faker();
 
         List<String> UserTheme = new ArrayList<>();
-        UserTheme.add(Enum.NewUserThemeDark.getValue());
-        UserTheme.add(Enum.NewUserThemeClassic.getValue());
-        UserTheme.add(Enum.NewUserThemeModern.getValue());
+        UserTheme.add(Constants.NewUserThemeDark.getValue());
+        UserTheme.add(Constants.NewUserThemeClassic.getValue());
+        UserTheme.add(Constants.NewUserThemeModern.getValue());
         int randomTheme = new Random().nextInt(UserTheme.size());
 
         List<String> NewUserAccess = new ArrayList<>();
-        NewUserAccess.add(Enum.ProjectAddDefaultAccessDesigner.getValue());
-        NewUserAccess.add(Enum.ProjectAddDefaultAccessLead.getValue());
-        NewUserAccess.add(Enum.ProjectAddDefaultAccessNo.getValue());
-        NewUserAccess.add(Enum.ProjectAddDefaultAccessRead.getValue());
-        NewUserAccess.add(Enum.ProjectAddDefaultAccessTester.getValue());
+        NewUserAccess.add(Constants.ProjectAddDefaultAccessDesigner.getValue());
+        NewUserAccess.add(Constants.ProjectAddDefaultAccessLead.getValue());
+        NewUserAccess.add(Constants.ProjectAddDefaultAccessRead.getValue());
+        NewUserAccess.add(Constants.ProjectAddDefaultAccessTester.getValue());
         int digitNewUserAccess = new Random().nextInt(NewUserAccess.size());
 
 
-        return InviteUser.builder()
-                .FullName(faker.name().fullName())
-                .EmailAddress(faker.internet().emailAddress())
+        return User.builder()
+                .fullName(faker.name().fullName())
+                .emailAddress(faker.internet().emailAddress())
                 .enableEmailNotifications(faker.random().nextBoolean())
                 .language("English")
                 .theme(UserTheme.get(randomTheme))
                 .locate(faker.country().name())
                 .timeZone(faker.country().capital())
-                .TypeOfInvite(Enum.typeOfInvite.getValue())
-                .Role(NewUserAccess.get(digitNewUserAccess))
-                .ThisUserIsActive(faker.random().nextBoolean())
-                .ThisUserIaAnAdministrator(faker.random().nextBoolean())
+                .typeOfInvite(Constants.typeOfInvite.getValue())
+                .role(NewUserAccess.get(digitNewUserAccess))
+                .thisUserIsActive(faker.random().nextBoolean())
+                .thisUserIaAnAdministrator(faker.random().nextBoolean())
                 .password(randomString())
                 .build();
     }
