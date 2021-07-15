@@ -1,6 +1,7 @@
 package tests.base;
 
 public enum Constants {
+
     suiteTypeAll("Use a single repository for all cases (recommended)"),
     suiteTypeBaseline("Use a single repository with baseline support"),
     suiteTypeManage("Use multiple test suites to manage cases"),
@@ -92,7 +93,7 @@ public enum Constants {
     NewUserTabAccess("Access"),
     NewUserTabProjects("Projects"),
     NewUserTabProjectProjectNameLocator("//a[contains(text(),'%s')]//ancestor::tr//a[contains(@class,'nolink')]"),
-    NewUserTabProjectProjectAccessLocator("//div[contains(@id,'userProjectAccessDropdown')]//a[contains(text(),\'%s\')]"),
+    NewUserTabProjectProjectAccessLocator("//div[contains(@id,'userProjectAccessDropdown')]//a[contains(text(),'%s')]"),
     NewUserCheckboxIsActive("This user is active"),
     NewUserCheckboxIsAdministrator("This user is an administrator"),
     AdministrationTabOverViewTabLocator(".storage-box-title"),
@@ -111,7 +112,6 @@ public enum Constants {
     AdministrationTabOpenDataManagementTabLocator("navigation-sub-subscription"),
     AdministrationTabOpenSiteSettingsTabLocator("navigation-sub-sitesettings"),
     HomePageButtonNewProjectLocator(".sidebar-button"),
-
     FieldName("name"),
     FieldAnnouncement("announcement"),
     CheckBoxAnnouncement("show_announcement"),
@@ -130,9 +130,7 @@ public enum Constants {
     ButtonAddUserVariableLocator("//a[contains(text(),'Add User Variable')]"),
     SwitchTabLocator("//a[@id = '%s' and contains(@class,'current')]"),
     ButtonOkLocator("userFieldSubmit"),
-
     ButtonAcceptAdd("accept");
-
 
     public final String value;
 
