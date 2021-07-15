@@ -5,9 +5,11 @@
         <listener class-name="tests.base.AnnotationTransformer"/>
     </listeners>
     <test name="Test package 1">
+        <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="tests.LogInLogOutTest" />
-            <class name="tests.RightSideTopPanelTest" />
+            <class name="tests.LogInLogOutTest"/>
+            <class name="tests.AddProjectTest"/>
+            <class name="tests.AddUserTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>

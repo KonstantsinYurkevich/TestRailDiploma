@@ -6,8 +6,6 @@ import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import static org.testng.Assert.assertTrue;
-
 @Log4j2
 public class Input {
     WebDriver driver;
@@ -23,15 +21,16 @@ public class Input {
     }
 
     public void writeIn(String text) {
-        assertTrue(isExist(By.xpath(String.format(input, fieldName))));
+        isExist(By.xpath(String.format(input, fieldName)));
         driver.findElement(By.xpath(String.format(input, fieldName))).sendKeys(text);
     }
 
     public void writeInArea(String text) {
-        assertTrue(isExist(By.xpath(String.format(area, fieldName))));
+        isExist(By.xpath(String.format(area, fieldName)));
         driver.findElement(By.xpath(String.format(area, fieldName))).sendKeys(text);
     }
 
+    //TODO если нужен isExist РЕАЛЬНО НУЖЕН?? То тогда создавай BaseElement с этим методом
     public boolean isExist(By locator) {
         log.info("Check that element exists");
         try {
