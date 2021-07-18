@@ -10,6 +10,8 @@
             <class name="tests.LogInLogOutTest"/>
             <class name="tests.AddProjectTest"/>
             <class name="tests.AddUserTest"/>
+            <class name="tests.api.AddProjectApiTest"/>
+            <class name="tests.api.AddTestSectionAndTestCaseTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>

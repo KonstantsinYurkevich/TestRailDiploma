@@ -7,7 +7,7 @@ Test Automation Framework for Testrail.io
 
 ---------------------
 
-### **Create Project**
+### **Create Project** 
 
 - Add Project
 - Add Example project
@@ -16,48 +16,23 @@ Test Automation Framework for Testrail.io
 
 - Tab PROJECT
 - Tab ACCESS
-- Tab DEFECTS
-- Tab REFERENCES
 - Tab USER VARIABLES
 
 ### **Add Example project**
 
 - Field NAME
 
-### **Dashboard**
-
-- Status all projects
-- List of projects
-- Todos
-- Type of View (Detail/Compact)
-
 ### **Project TABS**
 
 - Overview
-- Todo
-- Milestones
 - Test runs & Results
 - Test cases
-- Reports
-- Right side top bar(search,logged user, help & feedback, twitter/rss/newsletter)
-
-### **Edit Project**
-
-- Tab PROJECT
-- Tab ACCESS
-- Tab DEFECTS
-- Tab REFERENCES
-- Tab USER VARIABLES
 
 ### **Administration**
 
-- Tab Overview
 - Tab Projects
 - Tab Users & Roles
 - Tab Customization
-- Tab Integration
-- Tab Data Management
-- Tab Site Settings
 
 ### *Build requirements:*
 
@@ -78,6 +53,14 @@ Test Automation Framework for Testrail.io
 + Allure (TestNG - 2.13.9; Maven - 2.10.0)
 + Java Faker 1.0.2
 + Jackson-DataFormat-yaml 2.12.3
+
+### *API REQUESTS:*
++ Add Project
++ Delete Project
++ Add Test Case section
++ Delete Test Case section
++ Add Test Case
++Delete Test Case
 
 ### *Test info:*
 
