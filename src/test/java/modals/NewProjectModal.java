@@ -27,7 +27,7 @@ public class NewProjectModal extends BasePage {
         return isExist(By.id(Constants.ButtonAcceptAdd.getValue()));
     }
 
-    @Step("Fill in form of new account according test data ")
+    @Step("Fill in form of new project according test data ")
     public NewProjectDetailsPage create(Project project, UserVariable userVariable) {
 
         log.info("Fill in form of new project on new project page");
@@ -100,7 +100,7 @@ public class NewProjectModal extends BasePage {
 
     }
 
-    @Step("Fill in form of new account according test data ")
+    @Step("Fill in form of new project according test data ")
     public NewProjectDetailsPage createAndAddUserToTheProject(Project project, UserVariable userVariable, User user) {
         log.info("Fill in form of new project on new project page");
         new Input(driver, Constants.FieldName.getValue()).writeIn(project.getName());
