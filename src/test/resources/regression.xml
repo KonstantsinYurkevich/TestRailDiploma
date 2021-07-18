@@ -16,9 +16,15 @@
             <class name="tests.AddProjectTest"/>
         </classes>
     </test> <!-- Test -->
-    <test name="add user to the project">
+    <test name="Add user to the project">
         <classes>
             <class name="tests.AddUserToTheProjectTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="API add project, test case and test case section tests">
+        <classes>
+            <class name="tests.api.AddProjectApiTest"/>
+            <class name="tests.api.AddTestSectionAndTestCaseTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>
