@@ -22,9 +22,9 @@ public class HomePage extends BasePage {
         return isExist(TITLE);
     }
 
-    @Step("Click on button new on Accounts page")
+    @Step("Click on button new on Projects page")
     public NewProjectModal addProject() {
-        log.info("Click on button new on Accounts page");
+        log.info("Click on button new on Projects page");
         driver.findElement(By.cssSelector(Constants.HomePageButtonNewProjectLocator.getValue())).click();
         return new NewProjectModal(driver);
     }
