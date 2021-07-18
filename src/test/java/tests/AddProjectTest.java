@@ -13,6 +13,7 @@ public class AddProjectTest extends BaseTest {
 
     @Test(description = "Create project and delete it")
     public void projectShouldBeCreatedAndDeleted() {
+
         boolean isOpened, isExists, isDeleted;
         isOpened = logInPage
                 .open()
@@ -36,8 +37,5 @@ public class AddProjectTest extends BaseTest {
                 .deleteProject(project)
                 .isProjectDeleted(project);
         assertTrue(isDeleted, "Project wasn't deleted");
-
-
     }
-
 }
