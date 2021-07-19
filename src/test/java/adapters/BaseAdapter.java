@@ -52,6 +52,7 @@ public class BaseAdapter {
 
     @Step("API get request")
     public String get(int status, String url) {
+
         return
                 given().
                         header("Authorization", "Basic eW1hY2JyaWRlLmRzY290dHZAY29sZXZpbGxlY2FwaXRhbC5jb206NE41M3pNeHJ6OEdPRS9aUW4vN3g=").
