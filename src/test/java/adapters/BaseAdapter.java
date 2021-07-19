@@ -3,6 +3,7 @@ package adapters;
 import com.google.gson.Gson;
 import io.qameta.allure.Step;
 import tests.base.PropertyReader;
+import utils.TestRailConfig;
 
 import javax.xml.bind.DatatypeConverter;
 import java.nio.charset.StandardCharsets;
@@ -11,7 +12,6 @@ import static io.restassured.RestAssured.given;
 
 
 public class BaseAdapter {
-
     String user = System.getenv().getOrDefault("TESTRAIL.USER", PropertyReader.getProperty("testrail.user"));
     String password = System.getenv().getOrDefault("TESTRAIL.PASSWORD", PropertyReader.getProperty("testrail.password"));
     String contentType = System.getenv().getOrDefault("API_CONTENT_TYPE", PropertyReader.getProperty("api.content.type"));
@@ -25,9 +25,13 @@ public class BaseAdapter {
 
     @Step("API post request for crate")
     public String post(String body, int status, String url) {
+        TestRailConfig config = new TestRailConfig(baseUrl,user,password);
+        String basicAuth = "Basic "
+                + DatatypeConverter.printBase64Binary((config.getUsername()
+                + ":" + config.getPassword()).getBytes(StandardCharsets.UTF_8));
         return
                 given().
-                        header("Authorization", token()).
+                        header("Authorization", basicAuth).
                         header(contentType, contentTypeValue).
                         body(body).
                         log().all().
@@ -41,9 +45,13 @@ public class BaseAdapter {
 
     @Step("API post request for crate")
     public String post(int status, String url) {
+        TestRailConfig config = new TestRailConfig(baseUrl,user,password);
+        String basicAuth = "Basic "
+                + DatatypeConverter.printBase64Binary((config.getUsername()
+                + ":" + config.getPassword()).getBytes(StandardCharsets.UTF_8));
         return
                 given().
-                        header("Authorization", token()).
+                        header("Authorization", basicAuth).
                         header(contentType, contentTypeValue).
                         log().all().
                         when().
@@ -56,9 +64,13 @@ public class BaseAdapter {
 
     @Step("API get request")
     public String get(int status, String url) {
+        TestRailConfig config = new TestRailConfig(baseUrl,user,password);
+        String basicAuth = "Basic "
+                + DatatypeConverter.printBase64Binary((config.getUsername()
+                + ":" + config.getPassword()).getBytes(StandardCharsets.UTF_8));
         return
                 given().
-                        header("Authorization", token()).
+                        header("Authorization", basicAuth).
                         header(contentType, contentTypeValue).
                         log().all().
                         when().
@@ -69,8 +81,8 @@ public class BaseAdapter {
                         extract().body().asString();
     }
 
-    @Step("API get authorization token")
+    /*@Step("API get authorization token")
     public String token() {
         return "Basic " + DatatypeConverter.printBase64Binary((user + ":" + password).getBytes(StandardCharsets.UTF_8));
-    }
+    }*/
 }
