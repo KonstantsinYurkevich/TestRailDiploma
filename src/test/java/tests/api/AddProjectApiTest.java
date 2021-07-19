@@ -10,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 
 public class AddProjectApiTest {
 
-    @Test(description = "Project should be created")
+    @Test(description = "Project should be created API ")
     public void projectShouldBeCreated() {
         Project project = Project.builder()
                 .name(randomString())
