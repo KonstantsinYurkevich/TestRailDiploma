@@ -14,9 +14,9 @@ public class TestCaseFactory {
         int templateId = new Random().nextInt(4);
         return TestCase.builder()
                 .title(faker.harryPotter().spell())
-                .type_id(typeId)
-                .priority_id(priorityId)
-                .template_id(templateId)
+                .typeId(typeId)
+                .priorityId(priorityId)
+                .templateId(templateId)
                 .build();
     }
 }

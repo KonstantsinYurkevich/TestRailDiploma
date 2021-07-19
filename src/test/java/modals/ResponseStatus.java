@@ -6,19 +6,19 @@ import lombok.Data;
 @Data
 @Builder
 public class ResponseStatus {
-    Integer id;
+    int id;
     String name;
     String announcement;
-    boolean show_announcements;
-    boolean is_completed;
-    String completed_on;
-    String suite_mode;
+    boolean showAnnouncements;
+    boolean isCompleted;
+    String completedOn;
+    String suiteMode;
     String url;
-    Integer depth;
+    int depth;
     String description;
-    Integer display_order;
-    Integer parent_id;
-    Integer suite_id;
+    int displayOrder;
+    int parentId;
+    int suiteId;
     String title;
     String error;
 }

@@ -7,7 +7,7 @@ Test Automation Framework for Testrail.io
 
 ---------------------
 
-### **Create Project** 
+### **Create Project**
 
 - Add Project
 - Add Example project
@@ -55,12 +55,12 @@ Test Automation Framework for Testrail.io
 + Jackson-DataFormat-yaml 2.12.3
 
 ### *API REQUESTS:*
+
 + Add Project
 + Delete Project
 + Add Test Case section
 + Delete Test Case section
-+ Add Test Case
-+Delete Test Case
++ Add Test Case +Delete Test Case
 
 ### *Test info:*
 

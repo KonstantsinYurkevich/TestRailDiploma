@@ -7,9 +7,9 @@ import lombok.Data;
 @Builder
 public class TestCase {
     String title;
-    Integer type_id;
-    Integer priority_id;
-    Integer template_id;
+    int typeId;
+    int priorityId;
+    int templateId;
     String estimate;
     String refs;
 }

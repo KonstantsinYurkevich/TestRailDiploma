@@ -7,6 +7,6 @@ import lombok.Data;
 @Builder
 public class Section {
     String name;
-    Integer parent_id;
+    int parentId;
     String description;
 }
