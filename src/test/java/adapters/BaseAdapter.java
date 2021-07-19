@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import io.qameta.allure.Step;
 import tests.base.PropertyReader;
 
+import java.util.Base64;
+
 import static io.restassured.RestAssured.given;
 
 
@@ -21,9 +23,10 @@ public class BaseAdapter {
 
     @Step("API post request for crate")
     public String post(String body, int status, String url) {
+        String auth = getAuthorization(user,password);
         return
                 given().
-                        header("Authorization", "Basic eW1hY2JyaWRlLmRzY290dHZAY29sZXZpbGxlY2FwaXRhbC5jb206NE41M3pNeHJ6OEdPRS9aUW4vN3g=").
+                        header("Authorization", "Basic "+ auth).
                         header(contentType, contentTypeValue).
                         body(body).
                         log().all().
@@ -37,9 +40,10 @@ public class BaseAdapter {
 
     @Step("API post request for crate")
     public String post(int status, String url) {
+        String auth = getAuthorization(user,password);
         return
                 given().
-                        header("Authorization", "Basic eW1hY2JyaWRlLmRzY290dHZAY29sZXZpbGxlY2FwaXRhbC5jb206NE41M3pNeHJ6OEdPRS9aUW4vN3g=").
+                        header("Authorization", "Basic "+ auth).
                         header(contentType, contentTypeValue).
                         log().all().
                         when().
@@ -52,9 +56,10 @@ public class BaseAdapter {
 
     @Step("API get request")
     public String get(int status, String url) {
+        String auth = getAuthorization(user,password);
         return
                 given().
-                        header("Authorization", "Basic eW1hY2JyaWRlLmRzY290dHZAY29sZXZpbGxlY2FwaXRhbC5jb206NE41M3pNeHJ6OEdPRS9aUW4vN3g=").
+                        header("Authorization", "Basic "+ auth).
                         header(contentType, contentTypeValue).
                         log().all().
                         when().
@@ -69,4 +74,17 @@ public class BaseAdapter {
     public String token() {
         return "Basic " + DatatypeConverter.printBase64Binary((user + ":" + password).getBytes(StandardCharsets.UTF_8));
     }*/
+    private static String getAuthorization(String user, String password)
+    {
+        try
+        {
+            return new String(Base64.getEncoder().encode((user + ":" + password).getBytes()));
+        }
+        catch (IllegalArgumentException e)
+        {
+            // Not thrown
+        }
+
+        return "";
+    }
 }
