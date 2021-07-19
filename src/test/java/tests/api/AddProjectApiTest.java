@@ -17,9 +17,11 @@ public class AddProjectApiTest {
                 .build();
         ResponseStatus actual = new ProjectAdapter().create(project, 200);
         assertEquals(actual.getName(), project.getName());
-        ResponseStatus actualGet = new ProjectAdapter().get(actual.getId());
+        ResponseStatus actualGet = new ProjectAdapter().get(actual.getId(), 200);
         assertEquals(actualGet.getName(), project.getName());
         ResponseStatus delete = new ProjectAdapter().delete(200, actualGet.getId());
+        ResponseStatus getError = new ProjectAdapter().get(actual.getId(), 400);
+        assertEquals(getError.getError(), "Field :project_id is not a valid or accessible project.");
     }
 
 

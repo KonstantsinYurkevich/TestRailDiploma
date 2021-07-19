@@ -17,8 +17,8 @@ public class ProjectSection extends BaseAdapter {
     }
 
     @Step("Getting answer from API after get project request")
-    public ResponseStatus get(Integer sectionId) {
-        String response = get(200, baseUrl + projectSectionAPIGET + sectionId);
+    public ResponseStatus get(int sectionId, int codeStatus) {
+        String response = get(codeStatus, baseUrl + projectSectionAPIGET + sectionId);
         return gsonReader.fromJson(response, ResponseStatus.class);
     }
 

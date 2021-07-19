@@ -32,6 +32,9 @@ public class AddTestSectionAndTestCaseTest extends BaseAdapter {
         ResponseStatus responseStatusSection = new ProjectSection().create(section, 200, projectId);
         assertEquals(responseStatusSection.getName(), section.getName());
         ResponseStatus responseStatusSectionDelete = new ProjectSection().delete(200, responseStatusSection.getId());
+        ResponseStatus getError = new ProjectSection().get(responseStatusSection.getId(), 400);
+        assertEquals(getError.getError(), "Field :section_id is not a valid section.");
+
     }
 
     @Test(description = "Test case should be added to the project")
@@ -59,5 +62,7 @@ public class AddTestSectionAndTestCaseTest extends BaseAdapter {
         ResponseStatus responseStatusTestCeaseCreate = new ProjectTestCase().create(testCase, 200, responseStatusSection.getId());
         assertEquals(responseStatusTestCeaseCreate.getTitle(), testCase.getTitle());
         ResponseStatus responseStatusTestCeaseDelete = new ProjectTestCase().delete(200, responseStatusTestCeaseCreate.getId());
+        ResponseStatus getError = new ProjectTestCase().get(responseStatusSection.getId(), 400);
+        assertEquals(getError.getError(), "Field :case_id is not a valid test case.");
     }
 }
