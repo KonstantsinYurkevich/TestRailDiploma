@@ -35,12 +35,10 @@ import lombok.Value;
 @ToString(exclude = {"password"})
 public class TestRailConfig {
 
-    public  String baseApiUrl;
     public  String username;
     public  String password;
 
-    public TestRailConfig(final String baseApiUrl, final String username, final String password) {
-        this.baseApiUrl = baseApiUrl;
+    public TestRailConfig(final String username, final String password) {
         this.username = username;
         this.password = password;
     }

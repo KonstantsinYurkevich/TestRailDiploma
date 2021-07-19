@@ -25,13 +25,13 @@ public class BaseAdapter {
 
     @Step("API post request for crate")
     public String post(String body, int status, String url) {
-        TestRailConfig config = new TestRailConfig(baseUrl,user,password);
+        TestRailConfig config = new TestRailConfig(user,password);
         String basicAuth = "Basic "
                 + DatatypeConverter.printBase64Binary((config.getUsername()
                 + ":" + config.getPassword()).getBytes(StandardCharsets.UTF_8));
         return
                 given().
-                        header("Authorization", basicAuth).
+                        header("Authorization","Basic eW1hY2JyaWRlLmRzY290dHZAY29sZXZpbGxlY2FwaXRhbC5jb206NE41M3pNeHJ6OEdPRS9aUW4vN3g=").
                         header(contentType, contentTypeValue).
                         body(body).
                         log().all().
@@ -45,13 +45,13 @@ public class BaseAdapter {
 
     @Step("API post request for crate")
     public String post(int status, String url) {
-        TestRailConfig config = new TestRailConfig(baseUrl,user,password);
+        TestRailConfig config = new TestRailConfig(user,password);
         String basicAuth = "Basic "
                 + DatatypeConverter.printBase64Binary((config.getUsername()
                 + ":" + config.getPassword()).getBytes(StandardCharsets.UTF_8));
         return
                 given().
-                        header("Authorization", basicAuth).
+                        header("Authorization","Basic eW1hY2JyaWRlLmRzY290dHZAY29sZXZpbGxlY2FwaXRhbC5jb206NE41M3pNeHJ6OEdPRS9aUW4vN3g=").
                         header(contentType, contentTypeValue).
                         log().all().
                         when().
@@ -64,13 +64,13 @@ public class BaseAdapter {
 
     @Step("API get request")
     public String get(int status, String url) {
-        TestRailConfig config = new TestRailConfig(baseUrl,user,password);
+        TestRailConfig config = new TestRailConfig(user,password);
         String basicAuth = "Basic "
                 + DatatypeConverter.printBase64Binary((config.getUsername()
                 + ":" + config.getPassword()).getBytes(StandardCharsets.UTF_8));
         return
                 given().
-                        header("Authorization", basicAuth).
+                        header("Authorization","Basic eW1hY2JyaWRlLmRzY290dHZAY29sZXZpbGxlY2FwaXRhbC5jb206NE41M3pNeHJ6OEdPRS9aUW4vN3g=").
                         header(contentType, contentTypeValue).
                         log().all().
                         when().
