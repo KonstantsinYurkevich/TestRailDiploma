@@ -24,7 +24,7 @@ public class ProjectTestCase extends BaseAdapter {
 
     @Step("Getting answer from API after delete project request")
     public ResponseStatus delete(int status, Integer case_id) {
-        String response = post(status, baseUrl + testCaseAPIDELETE + case_id);
+        String response = postDelete(status, baseUrl + testCaseAPIDELETE + case_id);
         return gsonReader.fromJson(response, ResponseStatus.class);
     }
 }

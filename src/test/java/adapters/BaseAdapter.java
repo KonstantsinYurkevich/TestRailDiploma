@@ -8,8 +8,7 @@ import static io.restassured.RestAssured.given;
 
 
 public class BaseAdapter {
-    String user = System.getenv().getOrDefault("TESTRAIL.USER", PropertyReader.getProperty("testrail.user"));
-    String password = System.getenv().getOrDefault("TESTRAIL.PASSWORD", PropertyReader.getProperty("testrail.password"));
+
     String contentType = System.getenv().getOrDefault("API_CONTENT_TYPE", PropertyReader.getProperty("api.content.type"));
     String contentTypeValue = System.getenv().getOrDefault("API_CONTENT_TYPE_VALUE", PropertyReader.getProperty
             ("api.content.type.value"));
@@ -18,12 +17,14 @@ public class BaseAdapter {
 
     Gson gsonReader = new Gson();
 
+    String token = "Basic eW1hY2JyaWRlLmRzY290dHZAY29sZXZpbGxlY2FwaXRhbC5jb206NE41M3pNeHJ6OEdPRS9aUW4vN3g=";
 
-    @Step("API post request for crate")
+
+    @Step("API post request for create")
     public String post(String body, int status, String url) {
         return
                 given().
-                        header("Authorization", "Basic eW1hY2JyaWRlLmRzY290dHZAY29sZXZpbGxlY2FwaXRhbC5jb206NE41M3pNeHJ6OEdPRS9aUW4vN3g=").
+                        header("Authorization", token).
                         header(contentType, contentTypeValue).
                         body(body).
                         log().all().
@@ -35,11 +36,11 @@ public class BaseAdapter {
                         extract().body().asString();
     }
 
-    @Step("API post request for crate")
-    public String post(int status, String url) {
+    @Step("API post request for create")
+    public String postDelete(int status, String url) {
         return
                 given().
-                        header("Authorization", "Basic eW1hY2JyaWRlLmRzY290dHZAY29sZXZpbGxlY2FwaXRhbC5jb206NE41M3pNeHJ6OEdPRS9aUW4vN3g=").
+                        header("Authorization", token).
                         header(contentType, contentTypeValue).
                         log().all().
                         when().
@@ -55,7 +56,7 @@ public class BaseAdapter {
 
         return
                 given().
-                        header("Authorization", "Basic eW1hY2JyaWRlLmRzY290dHZAY29sZXZpbGxlY2FwaXRhbC5jb206NE41M3pNeHJ6OEdPRS9aUW4vN3g=").
+                        header("Authorization", token).
                         header(contentType, contentTypeValue).
                         log().all().
                         when().
