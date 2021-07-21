@@ -41,7 +41,7 @@ public class NewProjectDetailsPage extends BasePage {
         log.info("Validating Project");
         validateProjectName(project.getName());
 
-        if (project.isShowTheAnnouncement()) {
+        if (project.isShowAnnouncement()) {
             validateProjectAnnouncementIsShown(project.getAnnouncement());
         } else {
             validateProjectAnnouncementNotShown();

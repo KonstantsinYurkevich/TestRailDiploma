@@ -1,5 +1,6 @@
 package modals;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,7 +9,8 @@ import lombok.Data;
 public class Project {
     String name;
     String announcement;
-    boolean showTheAnnouncement;
+    @SerializedName("show_announcement")
+    boolean showAnnouncement;
     String testSuiteType;
     String defaultAccess;
     String userAccess;

@@ -36,7 +36,7 @@ public class ProjectFactory {
                 .name(faker.funnyName().name())
                 .announcement(faker.harryPotter().spell())
                 .testSuiteType(projectSuiteType.get(digit))
-                .showTheAnnouncement(randomBoolean)
+                .showAnnouncement(randomBoolean)
                 .defaultAccess(defaultAccessOptions.getValue(digitAccess))
                 .userAccess(defaultAccessOptions.getValue(digitAccess))
                 .defectViewURL(faker.internet().url())

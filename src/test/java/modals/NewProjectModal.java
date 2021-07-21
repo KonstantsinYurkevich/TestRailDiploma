@@ -33,7 +33,7 @@ public class NewProjectModal extends BasePage {
         log.info("Fill in form of new project on new project page");
         new Input(driver, Constants.FieldName.getValue()).writeIn(project.getName());
         new Input(driver, Constants.FieldAnnouncement.getValue()).writeInArea(project.getAnnouncement());
-        new CheckBox(driver, Constants.CheckBoxAnnouncement.getValue()).select(project.isShowTheAnnouncement());
+        new CheckBox(driver, Constants.CheckBoxAnnouncement.getValue()).select(project.isShowAnnouncement());
 
         String suiteType = project.getTestSuiteType();
         if (suiteType.equals(Constants.CheckBoxUseASingleRepositoryWithBaselineSupportLocator.getValue())) {
@@ -105,7 +105,7 @@ public class NewProjectModal extends BasePage {
         log.info("Fill in form of new project on new project page");
         new Input(driver, Constants.FieldName.getValue()).writeIn(project.getName());
         new Input(driver, Constants.FieldAnnouncement.getValue()).writeInArea(project.getAnnouncement());
-        new CheckBox(driver, Constants.CheckBoxAnnouncement.getValue()).select(project.isShowTheAnnouncement());
+        new CheckBox(driver, Constants.CheckBoxAnnouncement.getValue()).select(project.isShowAnnouncement());
 
         String suiteType = project.getTestSuiteType();
         if (suiteType.equals(Constants.CheckBoxUseASingleRepositoryWithBaselineSupportLocator.getValue())) {

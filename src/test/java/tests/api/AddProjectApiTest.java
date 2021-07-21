@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import static modals.UserFactory.randomString;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 
 public class AddProjectApiTest {
 
@@ -17,6 +18,7 @@ public class AddProjectApiTest {
                 .build();
         ResponseStatus actual = new ProjectAdapter().create(project, 200);
         assertEquals(actual.getName(), project.getName());
+        assertFalse(actual.isShowAnnouncements());
         ResponseStatus actualGet = new ProjectAdapter().get(actual.getId(), 200);
         assertEquals(actualGet.getName(), project.getName());
         ResponseStatus delete = new ProjectAdapter().delete(200, actualGet.getId());

@@ -12,6 +12,4 @@ public class UserVariable {
     String systemName;
     String type;
     String fallBack;
-
-
 }

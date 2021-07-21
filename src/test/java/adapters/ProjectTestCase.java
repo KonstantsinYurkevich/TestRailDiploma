@@ -11,7 +11,7 @@ public class ProjectTestCase extends BaseAdapter {
     private static final String testCaseAPIDELETE = "delete_case/";
 
     @Step("Getting answer from API after create test case request")
-    public ResponseStatus create(TestCase testCase, int status, Integer section_id) {
+    public ResponseStatus create(TestCase testCase, int status, int section_id) {
         String response = post(gsonReader.toJson(testCase), status, baseUrl + testCaseAPIPOST + section_id);
         return gsonReader.fromJson(response, ResponseStatus.class);
     }
@@ -23,7 +23,7 @@ public class ProjectTestCase extends BaseAdapter {
     }
 
     @Step("Getting answer from API after delete project request")
-    public ResponseStatus delete(int status, Integer case_id) {
+    public ResponseStatus delete(int status, int case_id) {
         String response = postDelete(status, baseUrl + testCaseAPIDELETE + case_id);
         return gsonReader.fromJson(response, ResponseStatus.class);
     }
