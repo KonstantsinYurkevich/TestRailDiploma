@@ -48,11 +48,11 @@ public class LogInPage extends BasePage {
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         log.info("Get error message on login page");
         By locator = null;
-        if (isExist(ERROR_MASSAGE)) {
+        if (!isExists(ERROR_MASSAGE)) {
             locator = ERROR_MASSAGE;
-        } else if (isExist(ERROR_MASSAGE_LOGIN)) {
+        } else if (!isExists(ERROR_MASSAGE_LOGIN)) {
             locator = ERROR_MASSAGE_LOGIN;
-        } else if (!isExist(ERROR_MASSAGE_LOGIN)) {
+        } else if (isExists(ERROR_MASSAGE_LOGIN)) {
             log.error("No such error");
             Assert.fail();
         }
