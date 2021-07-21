@@ -20,6 +20,16 @@ public class UserFactory {
         return sb.toString();
     }
 
+    public static String randomStringInt() {
+        String AB = "1234";
+        SecureRandom rnd = new SecureRandom();
+        int len = 1;
+        StringBuilder sb = new StringBuilder(len);
+        for (int i = 0; i < len; i++)
+            sb.append(AB.charAt(rnd.nextInt(AB.length())));
+        return sb.toString();
+    }
+
     public static User get() {
         Faker faker = new Faker();
 

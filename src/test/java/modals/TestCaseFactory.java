@@ -9,9 +9,9 @@ public class TestCaseFactory {
     public static TestCase get() {
 
         Faker faker = new Faker();
-        int typeId = new Random().nextInt(13);
-        int priorityId = new Random().nextInt(5);
-        int templateId = new Random().nextInt(4);
+        String typeId = String.valueOf(new Random().nextInt(13));
+        String priorityId = String.valueOf(new Random().nextInt(5));
+        String templateId = String.valueOf(new Random().nextInt(4));
         return TestCase.builder()
                 .title(faker.harryPotter().spell())
                 .typeId(typeId)

@@ -17,13 +17,13 @@ public class ProjectAdapter extends BaseAdapter {
     }
 
     @Step("Getting answer from API after get project request")
-    public ResponseStatus get(Integer projectId, int codeStatus) {
+    public ResponseStatus get(int projectId, int codeStatus) {
         String response = get(codeStatus, baseUrl + projectAPIGET + projectId);
         return gsonReader.fromJson(response, ResponseStatus.class);
     }
 
     @Step("Getting answer from API after delete project request")
-    public ResponseStatus delete(int status, Integer projectId) {
+    public ResponseStatus delete(int status, int projectId) {
         String response = postDelete(status, baseUrl + projectAPIDELETE + projectId);
         return gsonReader.fromJson(response, ResponseStatus.class);
     }

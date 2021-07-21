@@ -9,11 +9,12 @@ import modals.TestCase;
 import org.testng.annotations.Test;
 
 import static modals.UserFactory.randomString;
+import static modals.UserFactory.randomStringInt;
 import static org.testng.Assert.assertEquals;
 
 public class AddTestSectionAndTestCaseTest extends BaseAdapter {
 
-    private static final int projectId = 115;
+    private static final int projectId = 162;
 
     @Test(description = "Test case section should be added to the project")
     public void sectionShouldBeAddToTheExistingProject() {
@@ -45,9 +46,11 @@ public class AddTestSectionAndTestCaseTest extends BaseAdapter {
         ResponseStatus responseStatusSection = new ProjectSection().create(section, 200, projectId);
         TestCase testCase = TestCase.builder()
                 .title(randomString())
+                .priorityId(randomStringInt())
                 .build();
         ResponseStatus responseStatusTestCease = new ProjectTestCase().create(testCase, 200, responseStatusSection.getId());
         assertEquals(responseStatusTestCease.getTitle(), testCase.getTitle());
+        assertEquals(responseStatusTestCease.getPriorityId(), testCase.getPriorityId());
     }
 
     @Test(description = "Test case  should be deleted from the project")
