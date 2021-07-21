@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Regression Test suite" parallel="tests" thread-count="4">
+<suite name="Regression Test suite" parallel="tests" thread-count="2">
     <listeners>
         <listener class-name="tests.base.AnnotationTransformer"/>
     </listeners>
-    <test name="Log in and add user ">
-        <parameter name="browser" value="firefox"/>
+    <test name="Log in and add user">
         <classes>
             <class name="tests.LogInLogOutTest"/>
             <class name="tests.AddUserTest"/>
