@@ -14,7 +14,7 @@ import static org.testng.Assert.assertEquals;
 
 public class AddTestSectionAndTestCaseTest extends BaseAdapter {
 
-    private static final int projectId = 162;
+    private static final int projectId = 1;
 
     @Test(description = "Test case section should be added to the project")
     public void sectionShouldBeAddToTheExistingProject() {
@@ -65,7 +65,7 @@ public class AddTestSectionAndTestCaseTest extends BaseAdapter {
         ResponseStatus responseStatusTestCeaseCreate = new ProjectTestCase().create(testCase, 200, responseStatusSection.getId());
         assertEquals(responseStatusTestCeaseCreate.getTitle(), testCase.getTitle());
         ResponseStatus responseStatusTestCeaseDelete = new ProjectTestCase().delete(200, responseStatusTestCeaseCreate.getId());
-        ResponseStatus getError = new ProjectTestCase().get(responseStatusSection.getId(), 400);
+        ResponseStatus getError = new ProjectTestCase().get(responseStatusTestCeaseCreate.getId(), 400);
         assertEquals(getError.getError(), "Field :case_id is not a valid test case.");
     }
 }
