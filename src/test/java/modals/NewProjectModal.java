@@ -12,7 +12,6 @@ import pages.BasePage;
 import pages.NewProjectDetailsPage;
 import tests.base.Constants;
 
-import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
 @Log4j2
@@ -45,46 +44,29 @@ public class NewProjectModal extends BasePage {
         switchTab(Constants.ProjectAddTabAccess.getValue());
 
         new DropDownSelect(driver, Constants.DropDownProjectGlobalAccess.getValue()).option(project.getDefaultAccess());
-        new DropDownUserAccess(driver, "Kanstantsin Yurkevich").select(project.getUserAccess());
+        new DropDownUserAccess(driver, "Konstantin Yurkevich").select(project.getUserAccess());
 
         switchTab(Constants.ProjectAddTabDefects.getValue());
 
         new Input(driver, Constants.InputDefectViewUrl.getValue()).writeIn(project.getDefectViewURL());
-        String textDefectViewUrl = driver.findElement(By.xpath(Constants.FieldDefectViewURLLocator.getValue()))
-                .getAttribute("value");
-        assertEquals(textDefectViewUrl, project.getDefectViewURL());
         driver.findElement(By.xpath(Constants.FieldDefectViewURLLocator.getValue())).clear();
 
 
         new Input(driver, Constants.InputDefectAddUrl.getValue()).writeIn(project.getDefectAddURL());
         //assert that field is enabled and values saved
-        String textDefectAddUrl = driver.findElement(By.xpath(Constants.FieldDefectAddURLLocator.getValue()))
-                .getAttribute("value");
-        assertEquals(textDefectAddUrl, project.getDefectAddURL());
         driver.findElement(By.xpath(Constants.FieldDefectAddURLLocator.getValue())).clear();
         new DropDownSearch(driver, Constants.DropDownProjectDefectPlugin.getValue()).select(project.getDefectPlugin());
-        String defectPlugin = driver.findElement(By.xpath(Constants.DefectPluginInputLocator.getValue())).getText();
-        assertEquals(defectPlugin, project.getDefectPlugin());
 
         switchTab(Constants.ProjectAddTabReferences.getValue());
 
         new Input(driver, Constants.InputReferenceViewUrl.getValue()).writeIn(project.getReferenceViewURL());
         //assert that field is enabled and values saved
-        String textReferenceViewUrl = driver.findElement(By.xpath(Constants.FieldReferenceViewURLLocator.getValue()))
-                .getAttribute("value");
-        assertEquals(textReferenceViewUrl, project.getReferenceViewURL());
         driver.findElement(By.xpath(Constants.FieldReferenceViewURLLocator.getValue())).clear();
         new Input(driver, Constants.InputReferenceAddUrl.getValue()).writeIn(project.getReferenceAddURL());
         //assert that field is enabled and values saved
-        String textReferenceAddUrl = driver.findElement(By.xpath(Constants.FieldReferenceAddURLLocator.getValue()))
-                .getAttribute("value");
-        assertEquals(textReferenceAddUrl, project.getReferenceAddURL());
         driver.findElement(By.xpath(Constants.FieldReferenceAddURLLocator.getValue())).clear();
 
         new DropDownSearch(driver, Constants.DropDownProjectReferencePlugin.getValue()).select(project.getReferencePlugin());
-        String referencePlugin = driver.findElement(By.xpath(Constants.ReferencePluginInputLocator.getValue())).getText();
-        assertEquals(referencePlugin, project.getReferencePlugin());
-
         switchTab(Constants.ProjectAddTabUserVariables.getValue());
 
         driver.findElement(By.xpath(Constants.ButtonAddUserVariableLocator.getValue())).click();
@@ -122,38 +104,19 @@ public class NewProjectModal extends BasePage {
         switchTab(Constants.ProjectAddTabDefects.getValue());
 
         new Input(driver, Constants.InputDefectViewUrl.getValue()).writeIn(project.getDefectViewURL());
-        String textDefectViewUrl = driver.findElement(By.xpath(Constants.FieldDefectViewURLLocator.getValue()))
-                .getAttribute("value");
-        assertEquals(textDefectViewUrl, project.getDefectViewURL());
         driver.findElement(By.xpath(Constants.FieldDefectViewURLLocator.getValue())).clear();
         new Input(driver, Constants.InputDefectAddUrl.getValue()).writeIn(project.getDefectAddURL());
-        //assert that field is enabled and values saved
-        String textDefectAddUrl = driver.findElement(By.xpath(Constants.FieldDefectAddURLLocator.getValue()))
-                .getAttribute("value");
-        assertEquals(textDefectAddUrl, project.getDefectAddURL());
         driver.findElement(By.xpath(Constants.FieldDefectAddURLLocator.getValue())).clear();
         new DropDownSearch(driver, Constants.DropDownProjectDefectPlugin.getValue()).select(project.getDefectPlugin());
-        String defectPlugin = driver.findElement(By.xpath(Constants.DefectPluginInputLocator.getValue())).getText();
-        assertEquals(defectPlugin, project.getDefectPlugin());
 
         switchTab(Constants.ProjectAddTabReferences.getValue());
 
         new Input(driver, Constants.InputReferenceViewUrl.getValue()).writeIn(project.getReferenceViewURL());
-        //assert that field is enabled and values saved
-        String textReferenceViewUrl = driver.findElement(By.xpath(Constants.FieldReferenceViewURLLocator.getValue()))
-                .getAttribute("value");
-        assertEquals(textReferenceViewUrl, project.getReferenceViewURL());
         driver.findElement(By.xpath(Constants.FieldReferenceViewURLLocator.getValue())).clear();
         new Input(driver, Constants.InputReferenceAddUrl.getValue()).writeIn(project.getReferenceAddURL());
-        //assert that field is enabled and values saved
-        String textReferenceAddUrl = driver.findElement(By.xpath(Constants.FieldReferenceAddURLLocator.getValue()))
-                .getAttribute("value");
-        assertEquals(textReferenceAddUrl, project.getReferenceAddURL());
         driver.findElement(By.xpath(Constants.FieldReferenceAddURLLocator.getValue())).clear();
 
         new DropDownSearch(driver, Constants.DropDownProjectReferencePlugin.getValue()).select(project.getReferencePlugin());
-        String referencePlugin = driver.findElement(By.xpath(Constants.ReferencePluginInputLocator.getValue())).getText();
-        assertEquals(referencePlugin, project.getReferencePlugin());
 
         switchTab(Constants.ProjectAddTabUserVariables.getValue());
 
@@ -181,14 +144,16 @@ public class NewProjectModal extends BasePage {
     @Step("Click on button OK")
     public void buttonSubmit() {
         log.info("Click pn button OK");
-        driver.findElement(By.id(Constants.ButtonOkLocator.getValue())).click();
+        WebElement explicitWait = (new WebDriverWait(driver, 10)).until(ExpectedConditions.
+                presenceOfElementLocated(By.id(Constants.ButtonOkLocator.getValue())));
+        explicitWait.click();
     }
 
     @Step("Click on button Add Project")
     public void buttonAddProject() {
         log.info("Click on button Add Project");
-        WebElement explicitWait = (new WebDriverWait(driver, 10)).until(ExpectedConditions.
-                presenceOfElementLocated(By.id(Constants.ButtonAcceptAdd.getValue())));
-        explicitWait.click();
+        boolean explicitWait = (new WebDriverWait(driver, 10)).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".ui-helper-clearfix")));
+        assertTrue(explicitWait);
+        driver.findElement(By.id(Constants.ButtonAcceptAdd.getValue())).click();
     }
 }
