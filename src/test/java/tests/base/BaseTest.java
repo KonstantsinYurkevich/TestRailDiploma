@@ -43,7 +43,7 @@ public abstract class BaseTest {
     protected IntegrationTab integrationTab;
     protected DataManagementTab dataManagementTab;
     protected SiteSettingsTab siteSettingsTab;
-    protected WebDriver driver;
+    public WebDriver driver;
 
     public static int getRunId() {
         return runId;
