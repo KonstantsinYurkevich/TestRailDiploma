@@ -46,7 +46,7 @@ public abstract class BaseTest {
 
 
 
-   /* @BeforeSuite
+    @BeforeSuite
     public void testRunCreate(ITestContext context) {
         ProjectTestRun testRunAdapter = new ProjectTestRun();
         String suiteName = context.getCurrentXmlTest().getSuite().getName();
@@ -67,7 +67,7 @@ public abstract class BaseTest {
             ResponseStatus actual = testRunAdapter.create(testRun, 200, 36);
             runId = Integer.parseInt(actual.getId());
         }
-    }*/
+    }
 
     @Parameters({"browser"})
     @BeforeMethod

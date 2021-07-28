@@ -11,6 +11,7 @@ import tests.base.TestListener;
 import static io.restassured.RestAssured.given;
 
 @Log4j2
+@Listeners(TestListener.class)
 public class BaseAdapter {
 
     String baseUrl = System.getenv().getOrDefault("API_BASE_URL", PropertyReader.getProperty("api.base.url"));
