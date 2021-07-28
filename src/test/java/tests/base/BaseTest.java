@@ -45,30 +45,6 @@ public abstract class BaseTest {
     WebDriver driver;
 
 
-
-    @BeforeSuite
-    public void testRunCreate(ITestContext context) {
-        ProjectTestRun testRunAdapter = new ProjectTestRun();
-        String suiteName = context.getCurrentXmlTest().getSuite().getName();
-        if (suiteName.equals("Regression Test suite")) {
-            TestRun testRun = TestRun.builder()
-                    .name("Test run " + context.getSuite().getName() + " - " + context.getStartDate())
-                    .includeAll(true)
-                    .build();
-            ResponseStatus actual = testRunAdapter.create(testRun, 200, 36);
-            runId = Integer.parseInt(actual.getId());
-        } else if (suiteName.equals("Smoke Test suite")) {
-            ListOfCaseIdSmokeSuite listCaseId = new ListOfCaseIdSmokeSuite();
-            TestRun testRun = TestRun.builder()
-                    .name("Test run " + context.getSuite().getName() + " - " + context.getStartDate())
-                    .includeAll(false)
-                    .caseIds(listCaseId.getList())
-                    .build();
-            ResponseStatus actual = testRunAdapter.create(testRun, 200, 36);
-            runId = Integer.parseInt(actual.getId());
-        }
-    }
-
     @Parameters({"browser"})
     @BeforeMethod
 
