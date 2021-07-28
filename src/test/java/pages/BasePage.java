@@ -8,10 +8,10 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Listeners;
+
 import tests.base.Constants;
 import tests.base.PropertyReader;
-import tests.base.TestListener;
+
 
 import static org.testng.Assert.assertEquals;
 
