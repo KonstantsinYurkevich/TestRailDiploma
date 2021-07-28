@@ -49,7 +49,7 @@ public abstract class BaseTest {
         return runId;
     }
 
-    @BeforeSuite(enabled = false)
+    @BeforeSuite
     public void testRunCreate(ITestContext context) {
         ProjectTestRun testRunAdapter = new ProjectTestRun();
         String suiteName = context.getCurrentXmlTest().getSuite().getName();
