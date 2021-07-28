@@ -30,7 +30,7 @@ public class TestListener implements ITestListener {
         }
         log.info(String.format("Test Passed:%s", result.getName()));
 
-        apiSendTestCaseStatus(result);
+       /* apiSendTestCaseStatus(result);*/
 
     }
 
@@ -42,7 +42,7 @@ public class TestListener implements ITestListener {
         }
         log.info(String.format("Test Failed:%s", result.getName()));
 
-        apiSendTestCaseStatus(result);
+       /* apiSendTestCaseStatus(result);*/
 
     }
 
@@ -50,7 +50,7 @@ public class TestListener implements ITestListener {
         log.info("++++++++++++Tests class run complete++++++++++++");
     }
 
-    public void apiSendTestCaseStatus(ITestResult result) {
+   /* public void apiSendTestCaseStatus(ITestResult result) {
         boolean testSuccess = result.isSuccess();
         if (testSuccess) {
             statusId = "1";
@@ -63,5 +63,5 @@ public class TestListener implements ITestListener {
         int caseId = Integer.parseInt(result.getMethod().getConstructorOrMethod().getMethod().
                 getAnnotation(Test.class).testName());
         new ProjectTestCase().testCaseRunStatus(testCase, 200, BaseTest.getRunId(), caseId);
-    }
+    }*/
 }
