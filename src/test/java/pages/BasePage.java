@@ -16,7 +16,6 @@ import tests.base.TestListener;
 import static org.testng.Assert.assertEquals;
 
 @Log4j2
-@Listeners(TestListener.class)
 public abstract class BasePage {
 
     public static final String BASE_URL = System.getenv().getOrDefault("TESTRAIL_URL", PropertyReader.getProperty("testrail.url"));
