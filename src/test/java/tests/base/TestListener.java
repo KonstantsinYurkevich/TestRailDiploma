@@ -30,7 +30,7 @@ public class TestListener implements ITestListener {
         }
         log.info(String.format("Test Passed:%s", result.getName()));
 
-       /* apiSendTestCaseStatus(result);*/
+        apiSendTestCaseStatus(result);
 
     }
 
