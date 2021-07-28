@@ -18,8 +18,6 @@ import pages.HomePage;
 import pages.LogInPage;
 import pages.NewProjectDetailsPage;
 import pages.tabs.*;
-
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -73,6 +71,7 @@ public abstract class BaseTest {
 
     @Parameters({"browser"})
     @BeforeMethod
+
     public void setUp(@Optional("chrome") String browser, ITestContext testContext) {
         if (browser.equals("chrome")) {
             Map<String, Object> prefs = new HashMap<>();
@@ -82,7 +81,7 @@ public abstract class BaseTest {
             WebDriverManager.chromedriver().setup();
             options.addArguments("--no-sandbox");
             options.addArguments("--start-maximized");
-            /*options.addArguments("--headless");*/
+            /* options.addArguments("--headless");*/
             driver = new ChromeDriver(options);
         } else if (browser.equals("firefox")) {
             WebDriverManager.firefoxdriver().setup();
@@ -108,13 +107,13 @@ public abstract class BaseTest {
         siteSettingsTab = new SiteSettingsTab(driver);
         addProjectPage = new NewProjectModal(driver);
         newProjectDetailsPage = new NewProjectDetailsPage(driver);
-
     }
 
     @AfterMethod(alwaysRun = true)
-    public void tearDown(Method method) {
+    public void tearDown() {
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
         driver.quit();
+
     }
     public static int getRunId() {
         return runId;
