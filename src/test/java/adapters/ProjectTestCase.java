@@ -1,9 +1,11 @@
 package adapters;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import modals.ResponseStatus;
 import modals.TestCase;
 
+@Log4j2
 public class ProjectTestCase extends BaseAdapter {
 
     private static final String testCaseAPIPOST = "add_case/";
@@ -25,6 +27,11 @@ public class ProjectTestCase extends BaseAdapter {
     @Step("Getting answer from API after delete project request")
     public ResponseStatus delete(int status, int case_id) {
         String response = postDelete(status, baseUrl + testCaseAPIDELETE + case_id);
+        return gsonReader.fromJson(response, ResponseStatus.class);
+    }
+
+    public ResponseStatus testCaseRunStatus(TestCase testCase, int status, int runId, int case_id) {
+        String response = post(gsonReader.toJson(testCase), status, baseUrl + "add_result_for_case/" + runId + "/" + case_id);
         return gsonReader.fromJson(response, ResponseStatus.class);
     }
 }

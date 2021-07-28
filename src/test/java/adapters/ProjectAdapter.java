@@ -1,9 +1,11 @@
 package adapters;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import modals.Project;
 import modals.ResponseStatus;
 
+@Log4j2
 public class ProjectAdapter extends BaseAdapter {
 
     private static final String projectAPIPOST = "add_project";
@@ -17,14 +19,16 @@ public class ProjectAdapter extends BaseAdapter {
     }
 
     @Step("Getting answer from API after get project request")
-    public ResponseStatus get(int projectId, int codeStatus) {
-        String response = get(codeStatus, baseUrl + projectAPIGET + projectId);
+    public ResponseStatus get(String projectId, int codeStatus) {
+        int projectID = Integer.parseInt(String.valueOf(projectId));
+        String response = get(codeStatus, baseUrl + projectAPIGET + projectID);
         return gsonReader.fromJson(response, ResponseStatus.class);
     }
 
     @Step("Getting answer from API after delete project request")
-    public ResponseStatus delete(int status, int projectId) {
-        String response = postDelete(status, baseUrl + projectAPIDELETE + projectId);
+    public ResponseStatus delete(int status, String projectId) {
+        int projectID = Integer.parseInt(String.valueOf(projectId));
+        String response = postDelete(status, baseUrl + projectAPIDELETE + projectID);
         return gsonReader.fromJson(response, ResponseStatus.class);
     }
 }

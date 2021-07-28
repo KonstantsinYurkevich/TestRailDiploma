@@ -48,7 +48,7 @@ public class UserFactory {
 
 
         return User.builder()
-                .fullName(faker.name().fullName())
+                .fullName(faker.name().firstName())
                 .emailAddress(faker.internet().emailAddress())
                 .enableEmailNotifications(faker.random().nextBoolean())
                 .language("English")

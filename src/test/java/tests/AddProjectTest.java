@@ -11,9 +11,8 @@ import static org.testng.Assert.assertTrue;
 
 public class AddProjectTest extends BaseTest {
 
-    @Test(description = "Create project and delete it")
+    @Test(description = "Project should be created", testName = "2018")
     public void projectShouldBeCreatedAndDeleted() {
-
         boolean isOpened, isExists, isDeleted;
         isOpened = logInPage
                 .open()

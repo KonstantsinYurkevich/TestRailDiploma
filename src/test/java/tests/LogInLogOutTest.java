@@ -1,35 +1,47 @@
 package tests;
 
-import lombok.extern.log4j.Log4j2;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-@Log4j2
+
 public class LogInLogOutTest extends BaseTest {
 
-    @DataProvider(name = "Login data")
-    public Object[][] logInaData() {
-        return new Object[][]{
-                {"", PASSWORD, "Email/Login is required."},
-                {LOGIN, "", "Password is required."},
-                {LOGIN, "asddsadas", "Email/Login or Password is incorrect. Please try again."},
-                {"qweqweqw", PASSWORD, "Email/Login or Password is incorrect. Please try again."},
-        };
-    }
-
-    @Test(description = "Login tests", dataProvider = "Login data")
-    public void logInTest(String user, String password, String errorMessage) {
+    @Test(description = "Log in Should Be Failed With Empty Email", testName = "2014")
+    public void LoginShouldBeFailedWithEmptyEmail() {
         logInPage.open();
-        logInPage.logIn(user, password);
+        logInPage.logIn("", PASSWORD);
         String error = logInPage.getError();
-        assertEquals(error, errorMessage);
+        assertEquals(error, "Email/Login is required.");
     }
 
-    @Test(description = "Login test")
+    @Test(description = "Log in Should Be Failed With Empty Password", testName = "2015")
+    public void LoginShouldBeFailedWithEmptyPassword() {
+        logInPage.open();
+        logInPage.logIn(LOGIN, "");
+        String error = logInPage.getError();
+        assertEquals(error, "Password is required.");
+    }
+
+    @Test(description = "Log in Should Be Failed With Incorrect Password", testName = "2016")
+    public void LoginShouldBeFailedWithIncorrectPassword() {
+        logInPage.open();
+        logInPage.logIn(LOGIN, "123123qdqw");
+        String error = logInPage.getError();
+        assertEquals(error, "Email/Login or Password is incorrect. Please try again.");
+    }
+
+    @Test(description = "Log in Should Be Failed With Incorrect Email", testName = "2017")
+    public void LoginShouldBeFailedWithIncorrectEmail() {
+        logInPage.open();
+        logInPage.logIn("sdasdasd@gmail.com", PASSWORD);
+        String error = logInPage.getError();
+        assertEquals(error, "Email/Login or Password is incorrect. Please try again.");
+    }
+
+    @Test(description = "Log in should accept correct data ", testName = "2013")
     public void logInShouldBeAcceptedWithCorrectData() {
         boolean isOpened = logInPage
                 .open()
@@ -41,7 +53,7 @@ public class LogInLogOutTest extends BaseTest {
         assertTrue(isOpened, "Home page wasn't opened");
     }
 
-    @Test(description = "Logout test")
+    @Test(description = "Log out should be successful", testName = "2022")
     public void LogOutShouldGoToLogInPage() {
         boolean isOpened = logInPage
                 .open()

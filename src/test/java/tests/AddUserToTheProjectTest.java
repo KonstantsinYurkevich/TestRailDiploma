@@ -8,7 +8,7 @@ import static org.testng.Assert.assertTrue;
 
 public class AddUserToTheProjectTest extends BaseTest {
 
-    @Test(description = "Create project, create user, add created user to the new project")
+    @Test(description = "User should be added to the project in Add User form", testName = "2021")
     public void newUserShouldBeAddedToTheNewProject() {
         boolean isOpened, isDeleted;
         isOpened = logInPage
@@ -34,17 +34,16 @@ public class AddUserToTheProjectTest extends BaseTest {
                 .isPageOpened();
         assertTrue(isOpened, "Project page from Administration tab wasn't opened");
         User user = UserFactory.get();
-        usersRolesTab
+        isDeleted = usersRolesTab
                 .clickButtonAddUser()
-                .addNewUserToTheProject(project, user);
-        isDeleted = administrationPage
-                .openTabProjects()
+                .addNewUserToTheProject(project, user)
+                .openProjectTab()
                 .deleteProject(project)
                 .isProjectDeleted(project);
         assertTrue(isDeleted, "Project wasn't deleted");
     }
 
-    @Test(description = "Create project and add existing user to thw new project")
+    @Test(description = "Existing User should be added to the project", testName = "2020")
     public void existingUserShouldBeAddedToTheNewProject() {
         boolean isOpened, isDeleted;
         isOpened = logInPage

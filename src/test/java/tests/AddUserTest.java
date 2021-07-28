@@ -9,7 +9,7 @@ import static org.testng.Assert.assertTrue;
 
 public class AddUserTest extends BaseTest {
 
-    @Test(description = "Create user and check that new user exists")
+    @Test(description = "User should be added in to account", testName = "2019")
     public void userShouldBeCreated() {
         boolean isOpened = logInPage
                 .open()

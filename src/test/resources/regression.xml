@@ -7,12 +7,16 @@
     <test name="Log in and add user">
         <classes>
             <class name="tests.LogInLogOutTest"/>
-            <class name="tests.AddUserTest"/>
         </classes>
     </test> <!-- Test -->
     <test name="Add project">
         <classes>
             <class name="tests.AddProjectTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Add user Test">
+        <classes>
+            <class name="tests.AddUserTest"/>
         </classes>
     </test> <!-- Test -->
     <test name="Add user to the project">

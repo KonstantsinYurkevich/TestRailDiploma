@@ -33,7 +33,7 @@ public class ProjectFactory {
         boolean randomBoolean = random.nextBoolean();
 
         return Project.builder()
-                .name(faker.funnyName().name())
+                .name(faker.name().firstName())
                 .announcement(faker.harryPotter().spell())
                 .testSuiteType(projectSuiteType.get(digit))
                 .showAnnouncement(randomBoolean)

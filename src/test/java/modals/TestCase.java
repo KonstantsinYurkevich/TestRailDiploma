@@ -16,4 +16,7 @@ public class TestCase {
     String templateId;
     String estimate;
     String refs;
+    @SerializedName("status_id")
+    String statusId;
+    String comment;
 }

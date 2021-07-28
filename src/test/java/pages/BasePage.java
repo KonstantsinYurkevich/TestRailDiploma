@@ -8,12 +8,15 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Listeners;
 import tests.base.Constants;
 import tests.base.PropertyReader;
+import tests.base.TestListener;
 
 import static org.testng.Assert.assertEquals;
 
 @Log4j2
+@Listeners(TestListener.class)
 public abstract class BasePage {
 
     public static final String BASE_URL = System.getenv().getOrDefault("TESTRAIL_URL", PropertyReader.getProperty("testrail.url"));

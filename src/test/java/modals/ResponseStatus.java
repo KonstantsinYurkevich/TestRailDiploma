@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Builder
 public class ResponseStatus {
-    int id;
+    String id;
     String name;
     String announcement;
     @SerializedName("show_announcements")

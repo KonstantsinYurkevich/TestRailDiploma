@@ -3,6 +3,7 @@ package pages.tabs;
 import elements.CheckBox;
 import elements.DropDownSelect;
 import elements.Input;
+import io.qameta.allure.Step;
 import modals.Project;
 import modals.User;
 import org.openqa.selenium.By;
@@ -21,6 +22,7 @@ public class NewUserModal extends BasePage {
         return isExist(By.id(Constants.ButtonAcceptAdd.getValue()));
     }
 
+    @Step("Fill in new user form")
     public UsersRolesTab addUser(User user) {
 
         new Input(driver, Constants.NewUserInputName.getValue()).writeIn(user.getFullName());
@@ -64,7 +66,9 @@ public class NewUserModal extends BasePage {
         return new UsersRolesTab(driver);
     }
 
+    @Step("Fill in new user form")
     public UsersRolesTab addNewUserToTheProject(Project project, User user) {
+
         new Input(driver, Constants.NewUserInputName.getValue()).writeIn(user.getFullName());
         new Input(driver, Constants.NewUserInputEmail.getValue()).writeIn(user.getEmailAddress());
         boolean enableEmailNotification = user.isEnableEmailNotifications();

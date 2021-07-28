@@ -1,9 +1,11 @@
 package adapters;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import modals.ResponseStatus;
 import modals.Section;
 
+@Log4j2
 public class ProjectSection extends BaseAdapter {
 
     private static final String projectSectionAPIPOST = "add_section/";

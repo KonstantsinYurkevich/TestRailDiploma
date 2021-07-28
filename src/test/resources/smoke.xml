@@ -4,14 +4,15 @@
     <listeners>
         <listener class-name="tests.base.AnnotationTransformer"/>
     </listeners>
-    <test name="Test package 1">
-        <parameter name="browser" value="firefox"/>
+    <test name="UI Tests">
         <classes>
-            <class name="tests.LogInLogOutTest"/>
             <class name="tests.AddProjectTest"/>
-            <class name="tests.AddUserTest"/>
+            <class name="tests.LogInLogOutTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="API Tests">
+        <classes>
             <class name="tests.api.AddProjectApiTest"/>
-            <class name="tests.api.AddTestSectionAndTestCaseTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>
