@@ -13,7 +13,7 @@
         <selenium.version>3.141.59</selenium.version>
         <testng.version>7.1.0</testng.version>
         <webdrivermanager.version>4.4.1</webdrivermanager.version>
-        <suiteXmlFile>src/test/resources/regression.xml</suiteXmlFile>
+        <suiteXmlFile>src/test/resources/smoke.xml</suiteXmlFile>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <aspectjweaver.version>1.9.6</aspectjweaver.version>
