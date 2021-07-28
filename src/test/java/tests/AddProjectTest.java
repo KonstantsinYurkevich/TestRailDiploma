@@ -1,5 +1,6 @@
 package tests;
 
+import lombok.extern.log4j.Log4j2;
 import modals.Project;
 import modals.ProjectFactory;
 import modals.UserVariable;
@@ -9,9 +10,10 @@ import tests.base.BaseTest;
 
 import static org.testng.Assert.assertTrue;
 
+@Log4j2
 public class AddProjectTest extends BaseTest {
 
-    @Test(description = "Project should be created", testName = "2018")
+    @Test(description = "Project should be created")
     public void projectShouldBeCreatedAndDeleted() {
         boolean isOpened, isExists, isDeleted;
         isOpened = logInPage
