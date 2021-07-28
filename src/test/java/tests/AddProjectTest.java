@@ -13,7 +13,7 @@ import static org.testng.Assert.assertTrue;
 @Log4j2
 public class AddProjectTest extends BaseTest {
 
-    @Test(description = "Project should be created")
+    @Test(description = "Project should be created", testName = "2018")
     public void projectShouldBeCreatedAndDeleted() {
         boolean isOpened, isExists, isDeleted;
         isOpened = logInPage
