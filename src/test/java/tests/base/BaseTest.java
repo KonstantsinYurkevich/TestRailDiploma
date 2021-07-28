@@ -30,6 +30,7 @@ public abstract class BaseTest {
 
     public static final String LOGIN = System.getenv().getOrDefault("TESTRAIL_USER", PropertyReader.getProperty("testrail.user"));
     public static final String PASSWORD = System.getenv().getOrDefault("TESTRAIL_PASSWORD", PropertyReader.getProperty("testrail.password"));
+
     protected static int runId;
     protected LogInPage logInPage;
     protected HomePage homePage;
@@ -43,11 +44,9 @@ public abstract class BaseTest {
     protected IntegrationTab integrationTab;
     protected DataManagementTab dataManagementTab;
     protected SiteSettingsTab siteSettingsTab;
-    public WebDriver driver;
+    WebDriver driver;
 
-    public static int getRunId() {
-        return runId;
-    }
+
 
     @BeforeSuite
     public void testRunCreate(ITestContext context) {
@@ -117,5 +116,7 @@ public abstract class BaseTest {
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
         driver.quit();
     }
-
+    public static int getRunId() {
+        return runId;
+    }
 }
