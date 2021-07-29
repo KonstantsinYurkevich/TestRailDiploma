@@ -94,6 +94,7 @@ public abstract class BaseTest {
             ChromeOptions options = new ChromeOptions();
             prefs.put("profile.default_content_setting_values.notifications", 2);
             options.setExperimentalOption("prefs", prefs);
+            options.addArguments("--disable-dev-shm-usage");
             WebDriverManager.chromedriver().setup();
             options.addArguments("--no-sandbox");
             options.addArguments("--start-maximized");
