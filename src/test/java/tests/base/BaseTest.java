@@ -80,8 +80,8 @@ public abstract class BaseTest {
                         .put("OS", "Linux")
                         .put("Browser", "Chrome")
                         .put("Browser.Version", "86.0.4240.22")
-                        .build(),System.getProperty("user.dir")
-                + "target/allure-results/");
+                        .build(),System.getProperty("allure.results.directory")
+                );
     }
 
 
