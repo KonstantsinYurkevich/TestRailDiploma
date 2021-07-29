@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
 import tests.base.Constants;
+
 @Log4j2
 public class UsersRolesTab extends BasePage {
 
@@ -17,11 +18,13 @@ public class UsersRolesTab extends BasePage {
     public boolean isPageOpened() {
         return isExist(By.cssSelector(Constants.AdministrationTabUserAndRolesTabSearchFieldLocator.getValue()));
     }
+
     @Step("Click on button add user")
     public NewUserModal clickButtonAddUser() {
         driver.findElement(By.xpath(Constants.AdministrationTabUserAndRolesTabButtonAddUserLocator.getValue())).click();
         return new NewUserModal(driver);
     }
+
     @Step("Click on button add user")
     public ProjectTab openProjectTab() {
         log.info("Opening project tab");
