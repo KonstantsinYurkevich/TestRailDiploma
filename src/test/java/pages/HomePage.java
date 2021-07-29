@@ -41,7 +41,7 @@ public class HomePage extends BasePage {
     public HomePage openDashboard() {
         log.info("Click on tab Dashboard");
         driver.findElement(By.id(Constants.DashboardTabLocator.getValue())).click();
-        return this;
+        return new HomePage(driver);
     }
 
 }

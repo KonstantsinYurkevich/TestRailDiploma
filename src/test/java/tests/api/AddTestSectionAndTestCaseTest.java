@@ -17,15 +17,13 @@ import static org.testng.Assert.assertEquals;
 public class AddTestSectionAndTestCaseTest extends BaseAdapter {
 
     private static final int projectId = 1;
-    ProjectSection sectionProject = new ProjectSection();
-    ProjectTestCase projectTestCase = new ProjectTestCase();
 
     @Test(description = "Section should be added with API request", testName = "2024")
     public void sectionShouldBeAddToTheExistingProject() {
         Section section = Section.builder()
                 .name(randomString())
                 .build();
-        ResponseStatus responseStatusSection = sectionProject.create(section, 200, projectId);
+        ResponseStatus responseStatusSection = new ProjectSection().create(section, 200, projectId);
         assertEquals(responseStatusSection.getName(), section.getName());
     }
 
@@ -34,10 +32,10 @@ public class AddTestSectionAndTestCaseTest extends BaseAdapter {
         Section section = Section.builder()
                 .name(randomString())
                 .build();
-        ResponseStatus responseStatusSection = sectionProject.create(section, 200, projectId);
+        ResponseStatus responseStatusSection = new ProjectSection().create(section, 200, projectId);
         assertEquals(responseStatusSection.getName(), section.getName());
-        sectionProject.delete(200, Integer.parseInt(responseStatusSection.getId()));
-        ResponseStatus getError = sectionProject.get(Integer.parseInt(responseStatusSection.getId()), 400);
+        new ProjectSection().delete(200, Integer.parseInt(responseStatusSection.getId()));
+        ResponseStatus getError = new ProjectSection().get(Integer.parseInt(responseStatusSection.getId()), 400);
         assertEquals(getError.getError(), "Field :section_id is not a valid section.");
 
     }
@@ -47,12 +45,12 @@ public class AddTestSectionAndTestCaseTest extends BaseAdapter {
         Section section = Section.builder()
                 .name(randomString())
                 .build();
-        ResponseStatus responseStatusSection = sectionProject.create(section, 200, projectId);
+        ResponseStatus responseStatusSection = new ProjectSection().create(section, 200, projectId);
         TestCase testCase = TestCase.builder()
                 .title(randomString())
                 .priorityId(randomStringInt())
                 .build();
-        ResponseStatus responseStatusTestCease = projectTestCase.create(testCase, 200, Integer.parseInt(responseStatusSection.getId()));
+        ResponseStatus responseStatusTestCease = new ProjectTestCase().create(testCase, 200, Integer.parseInt(responseStatusSection.getId()));
         assertEquals(responseStatusTestCease.getTitle(), testCase.getTitle());
         assertEquals(responseStatusTestCease.getPriorityId(), testCase.getPriorityId());
     }
@@ -62,14 +60,14 @@ public class AddTestSectionAndTestCaseTest extends BaseAdapter {
         Section section = Section.builder()
                 .name(randomString())
                 .build();
-        ResponseStatus responseStatusSection = sectionProject.create(section, 200, projectId);
+        ResponseStatus responseStatusSection = new ProjectSection().create(section, 200, projectId);
         TestCase testCase = TestCase.builder()
                 .title(randomString())
                 .build();
-        ResponseStatus responseStatusTestCeaseCreate = projectTestCase.create(testCase, 200, Integer.parseInt(responseStatusSection.getId()));
+        ResponseStatus responseStatusTestCeaseCreate = new ProjectTestCase().create(testCase, 200, Integer.parseInt(responseStatusSection.getId()));
         assertEquals(responseStatusTestCeaseCreate.getTitle(), testCase.getTitle());
-        projectTestCase.delete(200, Integer.parseInt(responseStatusTestCeaseCreate.getId()));
-        ResponseStatus getError = projectTestCase.get(Integer.parseInt(responseStatusTestCeaseCreate.getId()), 400);
+        new ProjectTestCase().delete(200, Integer.parseInt(responseStatusTestCeaseCreate.getId()));
+        ResponseStatus getError = new ProjectTestCase().get(Integer.parseInt(responseStatusTestCeaseCreate.getId()), 400);
         assertEquals(getError.getError(), "Field :case_id is not a valid test case.");
     }
 

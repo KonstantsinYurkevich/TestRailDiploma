@@ -6,11 +6,13 @@ import lombok.extern.log4j.Log4j2;
 import modals.NewProjectModal;
 import modals.ResponseStatus;
 import modals.TestRun;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import pages.AdministrationPage;
@@ -21,6 +23,9 @@ import pages.tabs.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import com.google.common.collect.ImmutableMap;
+
+import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
 
 @Log4j2
 @Listeners(TestListener.class)
@@ -68,6 +73,17 @@ public abstract class BaseTest {
             runId = Integer.parseInt(actual.getId());
         }
     }
+    @AfterSuite
+    void setAllureEnvironment() {
+        allureEnvironmentWriter(
+                ImmutableMap.<String, String>builder()
+                        .put("OS", "Linux")
+                        .put("Browser", "Chrome")
+                        .put("Browser.Version", "86.0.4240.22")
+                        .put("URL", "http://eliasnogueira.com")
+                        .build());
+    }
+
 
     @Parameters({"browser"})
     @BeforeMethod
@@ -107,6 +123,8 @@ public abstract class BaseTest {
         siteSettingsTab = new SiteSettingsTab(driver);
         addProjectPage = new NewProjectModal(driver);
         newProjectDetailsPage = new NewProjectDetailsPage(driver);
+
+
     }
 
     @AfterMethod(alwaysRun = true)

@@ -28,6 +28,9 @@ public class AddProjectTest extends BaseTest {
         UserVariable userVariable = UserVariableFactory.get();
         isExists = homePage
                 .openDashboard()
+                .isPageOpened();
+        assertTrue(isExists, "Project wasn't created");
+        isExists = homePage
                 .addProject()
                 .create(project, userVariable)
                 .isProjectExists(project);
