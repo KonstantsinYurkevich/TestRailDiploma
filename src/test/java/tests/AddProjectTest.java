@@ -15,7 +15,7 @@ public class AddProjectTest extends BaseTest {
 
     @Test(description = "Project should be created", testName = "2018")
     public void projectShouldBeCreatedAndDeleted() {
-        boolean isOpened, isExists, isDeleted;
+        boolean isOpened, isDeleted;
         isOpened = logInPage
                 .open()
                 .isPageOpened();
@@ -26,16 +26,10 @@ public class AddProjectTest extends BaseTest {
         assertTrue(isOpened, "Home page wasn't opened");
         Project project = ProjectFactory.get();
         UserVariable userVariable = UserVariableFactory.get();
-        isExists = homePage
+        isDeleted = homePage
                 .openDashboard()
-                .isPageOpened();
-        assertTrue(isExists, "Project wasn't created");
-        isExists = homePage
-                .addProject()
+                .clickOnButtonAddProject()
                 .create(project, userVariable)
-                .isProjectExists(project);
-        assertTrue(isExists, "Project wasn't created");
-        isDeleted = newProjectDetailsPage
                 .validateProject(project)
                 .openProjectTab()
                 .deleteProject(project)

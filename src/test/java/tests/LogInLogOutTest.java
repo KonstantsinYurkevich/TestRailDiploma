@@ -10,7 +10,7 @@ import static org.testng.Assert.assertTrue;
 public class LogInLogOutTest extends BaseTest {
 
     @Test(description = "Log in Should Be Failed With Empty Email", testName = "2014")
-    public void LoginShouldBeFailedWithEmptyEmail() {
+    public void loginShouldBeFailedWithEmptyEmail() {
         logInPage.open();
         logInPage.logIn("", PASSWORD);
         String error = logInPage.getError();
@@ -18,7 +18,7 @@ public class LogInLogOutTest extends BaseTest {
     }
 
     @Test(description = "Log in Should Be Failed With Empty Password", testName = "2015")
-    public void LoginShouldBeFailedWithEmptyPassword() {
+    public void loginShouldBeFailedWithEmptyPassword() {
         logInPage.open();
         logInPage.logIn(LOGIN, "");
         String error = logInPage.getError();
@@ -26,7 +26,7 @@ public class LogInLogOutTest extends BaseTest {
     }
 
     @Test(description = "Log in Should Be Failed With Incorrect Password", testName = "2016")
-    public void LoginShouldBeFailedWithIncorrectPassword() {
+    public void loginShouldBeFailedWithIncorrectPassword() {
         logInPage.open();
         logInPage.logIn(LOGIN, "123123qdqw");
         String error = logInPage.getError();
@@ -34,7 +34,7 @@ public class LogInLogOutTest extends BaseTest {
     }
 
     @Test(description = "Log in Should Be Failed With Incorrect Email", testName = "2017")
-    public void LoginShouldBeFailedWithIncorrectEmail() {
+    public void loginShouldBeFailedWithIncorrectEmail() {
         logInPage.open();
         logInPage.logIn("sdasdasd@gmail.com", PASSWORD);
         String error = logInPage.getError();
@@ -54,7 +54,7 @@ public class LogInLogOutTest extends BaseTest {
     }
 
     @Test(description = "Log out should be successful", testName = "2022")
-    public void LogOutShouldGoToLogInPage() {
+    public void logOutShouldGoToLogInPage() {
         boolean isOpened = logInPage
                 .open()
                 .isPageOpened();

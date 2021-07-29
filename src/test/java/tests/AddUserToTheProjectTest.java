@@ -22,7 +22,7 @@ public class AddUserToTheProjectTest extends BaseTest {
         Project project = ProjectFactory.get();
         UserVariable userVariable = UserVariableFactory.get();
         homePage
-                .addProject()
+                .clickOnButtonAddProject()
                 .create(project, userVariable)
                 .validateProject(project);
         isOpened = homePage
@@ -70,7 +70,7 @@ public class AddUserToTheProjectTest extends BaseTest {
         UserVariable userVariable = UserVariableFactory.get();
         isDeleted = homePage
                 .openDashboard()
-                .addProject()
+                .clickOnButtonAddProject()
                 .createAndAddUserToTheProject(project, userVariable, user)
                 .validateProject(project)
                 .openProjectTab()

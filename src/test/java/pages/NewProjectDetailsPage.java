@@ -46,6 +46,6 @@ public class NewProjectDetailsPage extends BasePage {
         } else {
             validateProjectAnnouncementNotShown();
         }
-        return this;
+        return new NewProjectDetailsPage(driver);
     }
 }

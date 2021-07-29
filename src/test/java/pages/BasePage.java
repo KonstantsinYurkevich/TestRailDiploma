@@ -73,12 +73,13 @@ public abstract class BasePage {
     public void validateProjectName(String expected) {
         log.info("Validating Project name");
         driver.findElement(By.id(Constants.DashboardTabLocator.getValue())).click();
-        driver.findElement(By.xpath(String.format(Constants.ProjectInListLocator.getValue(), expected))).click();
         isExist(By.cssSelector(Constants.ProjectNameLocator.getValue()));
+        driver.findElement(By.xpath(String.format(Constants.ProjectInListLocator.getValue(), expected))).click();
         assertEquals(
                 driver.findElement(By.cssSelector(Constants.ProjectNameLocator.getValue())).getText(),
                 expected,
                 "Project name is not correct");
+
     }
 
     @Step("Validating Project announcement is shown")
