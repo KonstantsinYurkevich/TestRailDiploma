@@ -73,15 +73,15 @@ public abstract class BaseTest {
             runId = Integer.parseInt(actual.getId());
         }
     }
-    @AfterSuite
-    void setAllureEnvironment() {
+    @BeforeSuite
+    public void setAllureEnvironment() {
         allureEnvironmentWriter(
                 ImmutableMap.<String, String>builder()
                         .put("OS", "Linux")
                         .put("Browser", "Chrome")
                         .put("Browser.Version", "86.0.4240.22")
-                        .put("URL", "http://eliasnogueira.com")
-                        .build());
+                        .build(),System.getProperty("user.dir")
+                + "target/allure-results/");
     }
 
 
